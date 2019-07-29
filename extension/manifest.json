@@ -1,0 +1,49 @@
+{
+
+  "manifest_version": 2,
+  "name": "CR-Fixes",
+  "version": "1.0",
+
+  "description": "Adds some additional functionality to the Crunchyroll website.",
+  "homepage_url": "https://github.com/TheOneric/cr-fixes",
+
+  "icons": {
+    "96": "icon-96.png",
+    "64": "icon-64.png",
+    "48": "icon-48.png",
+    "32": "icon-32.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://www.crunchyroll.com/",
+				  "https://www.crunchyroll.com/news",
+				  "https://www.crunchyroll.com/videos/*"],
+      "js": ["js/cs_background.js"]
+    }
+  ],
+
+  "browser_action": {
+    "default_icon": "icon-32.png",
+    "default_title": "CR-Fixes",
+    "default_popup": "extension_pages/popup_overview.html"
+  },
+
+  "web_accessible_resources": [
+    "img/cr-background-template.png"
+  ],
+
+  "permissions": ["storage"],
+
+  "options_ui": {
+    "page": "extension_pages/settings_full.html"
+  },
+
+  "applications": {
+    "gecko": {
+      "id": "cr-fixes@oneric.de"
+    }
+  }
+
+}
+
