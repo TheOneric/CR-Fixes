@@ -7,6 +7,12 @@ body {
   display: none;
 }
 
+.errorbox {
+	border: 3pt solid #8B0000;
+	padding: 2pt;
+	background-color: #FFB6C1;
+}
+
 
 /****************** Slider Stuff ********************/
 .switch {

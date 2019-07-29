@@ -26,12 +26,40 @@
 
 <body>
   <div id="popup-content">
-    There will probably someday, maybe, for sure be an overview here. lol 
+    <form>
+	 <table>
+	  <tr>
+		<th>
+		 <label for="autoplay"> Enable Autoplay </label>
+		</th> <td>
+		 <label class="switch">
+			<input type="checkbox" id="autoplay">
+			<span class="slider round"></span>
+		 </label>
+		</td> <td></td> 
+	  </tr>
+
+	  <tr class="spaceOver">
+		<th>
+		 <label for="darktheme"> Use Darktheme </label>
+		</th> <td>
+		 <label class="switch">
+			<input type="checkbox" id="darktheme">
+			<span class="slider round"></span>
+		 </label>
+		</td> <td></td> 
+	  </tr>
+	 </table>
+	 
+	 <button type="submit">Save</button>
+	 <button type="button" id="fullSettingsButton" style="float:right !important;">See Settings</button>
+	</form> 
   </div>
-  <div id="error-content" class="hidden">
+  <div id="error-content" class="hidden errorbox">
     <p>Something went wrong.</p><p>Whoopsie. ｡(^ω^)ゞ</p>
   </div>
-  <!--<script src="choose_beast.js"></script>-->
+  <script type="text/javascript" src="settings.js"></script>
+  <script type="text/javascript" src="popup.js"></script>
 </body>
 
 </html>

@@ -16,11 +16,23 @@
 
   "content_scripts": [
     {
-      "matches": ["https://www.crunchyroll.com/",
-				  "https://www.crunchyroll.com/news",
-				  "https://www.crunchyroll.com/videos/*"],
+      "matches": [
+		"https://www.crunchyroll.com",
+		"https://www.crunchyroll.com/*"
+	  ],
       "js": ["js/cs_background.js"]
-    }
+    },
+	{
+	  "matches": [
+		"https://www.crunchyroll.com",
+		"https://www.crunchyroll.com/",
+		"https://www.crunchyroll.com/de",
+		"https://www.crunchyroll.com/news",
+		"https://www.crunchyroll.com/videos/*"
+	  ],
+	  "js": ["js/test.js"],
+	  "run_at": "document_end"
+	}
   ],
 
   "browser_action": {
@@ -33,7 +45,10 @@
     "img/cr-background-template.png"
   ],
 
-  "permissions": ["storage"],
+  "permissions": [
+		"storage",
+		"*://ceunchyroll.com/*"
+  ],
 
   "options_ui": {
     "page": "extension_pages/settings_full.html"

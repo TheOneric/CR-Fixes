@@ -26,15 +26,18 @@ var def_ps_5_3_y = 768;
 var def_background = false;
 var def_bg_url = "";
 
-var INITIALISED_CHOICES = false;
+var event_crf_settings_loaded = new CustomEvent('CRFSettingsLoaded', {bubbles: true, cancelable: false});
+
 
 function onError(error) {
   console.log(`Error: ${error}`);
+  var errCon = document.querySelector("#error-content");
+  if(errCon) errCon.classList.remove("hidden");
 }
 
 
 function loadOptions() {
-	//TODO Settings are not loaded properly !
+  
   function setCurrentChoice(result) {
 	var ap = document.getElementById('autoplay');
     var dt = document.getElementById('darktheme');
@@ -46,25 +49,46 @@ function loadOptions() {
     var bg = document.getElementById('customBackground');
     var bg_url = document.getElementById('bg-url');
 	
-    if(ap) ap.value = result.autoplay || def_autoplay;
-    if(dt) dt.value = result.darktheme || def_darktheme;
-	if(ps) ps.value = result.customPlayerSizes || def_playerResize;
-    if(ps_16_9_x) ps_16_9_x.value = result.ps_16_9_x || def_ps_16_9_x;
-    if(ps_16_9_y) ps_16_9_y.value = result.ps_16_9_y || def_ps_16_9_y;
-    if(ps_5_3_x) ps_5_3_x.value = result.ps_5_3_x || def_ps_5_3_x;
-    if(ps_5_3_y) ps_5_3_y.value = result.ps_5_3_y || def_ps_5_3_y;
-	if(bg) bg.value = result.customBackground || def_background;
-	if(bg_url) bg_url.value = result.bg_url || def_bg_url;
+	// Easy Default case handling (no booleans)
+    if(!!ps_16_9_x) ps_16_9_x.value = result.ps_16_9_x || def_ps_16_9_x;
+    if(!!ps_16_9_y) ps_16_9_y.value = result.ps_16_9_y || def_ps_16_9_y;
+    if(!!ps_5_3_x) ps_5_3_x.value = result.ps_5_3_x || def_ps_5_3_x;
+    if(!!ps_5_3_y) ps_5_3_y.value = result.ps_5_3_y || def_ps_5_3_y;
+	if(!!bg_url) bg_url.value = result.bg_url || def_bg_url;
+
+	//Messy
+    if(!!ap) { 
+		if(typeof result.autoplay != "undefined")
+			ap.checked = result.autoplay;
+		else
+			ap.checked = def_autoplay;
+	}
+    if(!!dt) {
+		if(typeof result.darktheme != "undefined") dt.checked = result.darktheme;
+		else dt.checked = def_darktheme;
+	}
+	if(!!ps) {
+		if(typeof result.customPlayerSizes != "undefined") ps.checked = result.customPlayerSizes;
+		else ps.checked = def_playerResize;
+	}
+	if(!!bg) {
+		if(typeof result.customBackground) bg.checked = result.customBackground;
+		else bg.checked = def_background;
+	}
 	
-	INITIALISED_CHOICES = true;
+	ap.dispatchEvent(event_crf_settings_loaded);
+	console.log(result);
   }
 
   var getting = browser.storage.sync.get();
+  //console.log("Loading Settings …");
   getting.then(setCurrentChoice, onError);
 }
 
 
 function restoreDefaults() {
+  if(!confirm("Are you sure you want to restore Default settings ?\n(Changes still need to bes saved afterwards)"))
+	return;
   var prom = browser.storage.sync.set({
     autoplay: def_autoplay,
     darktheme: def_playerResize,
@@ -79,7 +103,7 @@ function restoreDefaults() {
   prom.then(loadOptions, onError);
 }
 
-
 document.addEventListener("DOMContentLoaded", loadOptions);
+
 
 

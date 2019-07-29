@@ -21,6 +21,7 @@
 function disenableAll() {
     var bg = document.getElementById('customBackground').checked;
     var ps = document.getElementById('customPlayerSizes').checked;
+	console.log("[disenAll] bg:"+bg+"  ;  ps:"+ps);
     document.getElementById('bg-url').disabled = !bg;
     document.getElementById('player-size-16-9-x').disabled = !ps;
     document.getElementById('player-size-16-9-y').disabled = !ps;
@@ -31,47 +32,49 @@ function disenableAll() {
 function saveOptions(e) {
   e.preventDefault();
   browser.storage.sync.set({
-    autoplay: document.getElementById('autoplay').value,
-    darktheme: document.getElementById('darktheme').value,
-    customPlayerSizes: document.getElementById('customPlayerSizes').value,
+    autoplay: document.getElementById('autoplay').checked,
+    darktheme: document.getElementById('darktheme').checked,
+    customPlayerSizes: document.getElementById('customPlayerSizes').checked,
     ps_16_9_x: document.getElementById('player-size-16-9-x').value,
     ps_16_9_y: document.getElementById('player-size-16-9-y').value,
     ps_5_3_x: document.getElementById('player-size-5-3-x').value,
     ps_5_3_y: document.getElementById('player-size-5-3-y').value,
-    customBackground: document.getElementById('customBackground').value,
+    customBackground: document.getElementById('customBackground').checked,
     bg_url: document.getElementById('bg-url').value
   });
 }
 
 function init() {
-	// Check probably unnecessary. DOM3 specification should make sure the listeners are called in order
-	/*if(INITIALISED_CHOICES) {*/
-		disenableAll();
-	/*} else {
-		var poller = setInterval(function(){
-            if(INITIALISED_CHOICES) {
-                clearInterval(poller);
-                disenableAll();
-            }
-        }, 75);
-	}*/
+	console.log("-- Start Init");
+	//TODO: Bug: For some reason all checkboxes appear to be unchecked when executing here,
+	//		 but are fine when called from 'change' event
+	//       As this doesn't cause any problems and can easily be fixed by toggling two times
+	//		 fixing this has a low priority right now
+	disenableAll(); 
+	console.log("-- Init succesfull !");
+
+	document.addEventListener("DOMContentLoaded", function (event) {
+	    var _selector = document.getElementById('customBackground');
+	    _selector.addEventListener('change', disenableAll);
+		var _selector = document.getElementById('customPlayerSizes');
+	    _selector.addEventListener('change', disenableAll);
+	});
+	
 }
 
 
 
-document.addEventListener("DOMContentLoaded", function (event) {
-    var _selector = document.getElementById('customBackground');
-    _selector.addEventListener('change', disenableAll);
-	var _selector = document.getElementById('customPlayerSizes');
-    _selector.addEventListener('change', disenableAll);
-});
 
-
-
-// Init Dis/Enable states 
-document.addEventListener("DOMContentLoaded", init());
 
 
 document.querySelector("form").addEventListener("submit", saveOptions);
+document.querySelector("#restoreDefButton").addEventListener("click", restoreDefaults);
+
+// Init Dis/Enable states 
+document.addEventListener("CRFSettingsLoaded", init());
+
+
+
+
 
 
