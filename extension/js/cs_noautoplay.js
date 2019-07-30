@@ -27,6 +27,19 @@ function onError(e) {
   //debugger;
 }
 
+function crf_onVideoEnd_dynamic(next_ep_link) {
+	browser.storage.sync.get(["autoplay"]).then(	function (res) {
+		if(res.autoplay) {
+			window.location.href = next_ep_link;
+			console.log("[CRF] Allow Autoplay. At least this time … (￣ヘ￣)"); 
+		}
+		else console.log("[CRF] Stopped Autoplay. <(￣︶￣)>");
+	}, onError
+	);
+}
+//Make above function available to be called from window context, to allow for dynamic dis/enabling of autoplay
+exportFunction(crf_onVideoEnd_dynamic, window, {defineAs: 'crf_onVideoEnd_dynamic'});
+
 function init(settings) {
   if(settings.autoplay)
     return;

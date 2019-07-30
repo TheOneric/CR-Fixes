@@ -129,7 +129,9 @@ function VilosPlayer() {
         }), i.on("keydown", g), i.on("volumechange", function(a) {
             localStorage.setItem("vilosPreferredVolume", a.volume.toFixed(2))
         }), i.on("ended", function() {
-            /** false && c && (location.href = c)  //Apart from formatiing and comments this line is the only change from the source script
+            /** false && c && (location.href = c) */  
+			//Apart from formatiing and comments the neighbouring lines are the only changes 
+			if(!!c) crf_onVideoEnd_dynamic(c);
         })
     }
 }

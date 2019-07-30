@@ -19,10 +19,10 @@
 var def_autoplay = false;
 var def_darktheme = true;
 var def_playerResize = true;
-var def_ps_16_9_x = 1280;
-var def_ps_16_9_y = 720;
-var def_ps_5_3_x = 1280;
-var def_ps_5_3_y = 768;
+var def_ps_16_9_x = 960;
+var def_ps_16_9_y = 540;
+var def_ps_5_3_x = 960;
+var def_ps_5_3_y = 576;
 var def_background = false;
 var def_bg_url = "";
 
