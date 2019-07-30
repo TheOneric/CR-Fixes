@@ -36,7 +36,7 @@ function insertCustomPlayerSizes(settings) {
     	height: '+settings.ps_16_9_y+'px;\
   }';
   document.getElementsByTagName('head')[0].appendChild(css);
-  console.log("Appendend custom style !");
+  //console.log("Appendend custom style !");
   
   //Now remove conflicting showmedia_free_trial_signup if present
   var elem = document.getElementById('showmedia_free_trial_signup');
