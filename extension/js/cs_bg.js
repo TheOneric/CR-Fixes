@@ -60,6 +60,7 @@ function replaceBackground_splashlink(setStyle, target_style) {
     } else {
 		//TODO Replace with more elegant DOMMuationObserver
         //console.log("WARNING: Cannot replace background image, because 'template_skin_splashlink' does not exist ! \n Waiting for elemnt to be added.");
+		var counter = 0;
         var poller = setInterval(function(){
             var skin = document.querySelector('#template_skin_splashlink');
             if(skin !== null) {
@@ -67,6 +68,8 @@ function replaceBackground_splashlink(setStyle, target_style) {
                 //skin.style = target_style;
 				setStyle(skin);
             }
+			counter++;
+			if(counter > 25) clearInterval(poller);
         }, 50);
     }
 }
