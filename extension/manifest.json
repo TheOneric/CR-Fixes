@@ -15,23 +15,13 @@
   },
 
   "content_scripts": [
-    {
-      "matches": [
-		"https://www.crunchyroll.com",
-		"https://www.crunchyroll.com/*"
-	  ],
-      "js": ["js/cs_background.js"]
-    },
+    
 	{
 	  "matches": [
-		"https://www.crunchyroll.com",
-		"https://www.crunchyroll.com/",
-		"https://www.crunchyroll.com/de",
-		"https://www.crunchyroll.com/news",
-		"https://www.crunchyroll.com/videos/*"
+		"https://www.crunchyroll.com/*"
 	  ],
-	  "js": ["js/test.js"],
-	  "run_at": "document_end"
+	  "js": ["js/cs_bg.js"],
+	  "run_at": "document_idle"
 	}
   ],
 
@@ -46,8 +36,7 @@
   ],
 
   "permissions": [
-		"storage",
-		"*://ceunchyroll.com/*"
+		"storage"
   ],
 
   "options_ui": {

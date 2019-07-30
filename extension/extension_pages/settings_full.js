@@ -59,6 +59,8 @@ function init() {
 		var _selector = document.getElementById('customPlayerSizes');
 	    _selector.addEventListener('change', disenableAll);
 	});
+
+	document.getElementById('bgTemplate').href = browser.runtime.getURL("img/cr-background-template.png");
 	
 }
 

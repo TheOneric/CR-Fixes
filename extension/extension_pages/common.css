@@ -13,6 +13,16 @@ body {
 	background-color: #FFB6C1;
 }
 
+.emph {
+	font-weight: bold;
+}
+
+.note {
+	font-size: 80%;
+	font-style: italic;
+	padding: 3pt;
+}
+
 
 /****************** Slider Stuff ********************/
 .switch {
