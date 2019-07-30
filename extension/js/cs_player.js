@@ -24,7 +24,7 @@ function insertCustomPlayerSizes(settings) {
 	//First inject custom CSS to change player size
 	var css = document.createElement('style');
 	css.type = "text/css";
-	css.title = "Player-Resize"
+	//css.title = "Player-Resize" //Multiple differnetly titled css styles seem to cause problems
 	css.innerHTML = '\
 	.player-container { \
 	    width: '+settings.ps_5_3_x+'px; \

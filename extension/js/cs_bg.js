@@ -90,7 +90,7 @@ function colour_main_container(darktheme) {
 	else colour = '#f2f2f2';
 	var css = document.createElement('style');
 	css.type = "text/css";
-	css.title = "CRFix-general"
+	//css.title = "CRFix-general"
 	// If CR did not mess up way more than expected, there should only be one 'container' (ids are unique)
 	css.innerHTML = '\
 	div#container.cf { \
