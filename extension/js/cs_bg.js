@@ -18,29 +18,41 @@
 	Copyright 2019  Oneric  https://github.com/TheOneric , https://oneric.de
 */
 
-var settings_query = browser.storage.sync.get(["customBackground", "bg_url"]);
+var settings_bg_query = browser.storage.sync.get(["customBackground", "bg_url"]);
 
 function onError(e) {
 	console.log("Error: "+e);
 }
 
 function replaceBackground(settings) {
-	if(window.location.href.match(/^https?:\/\/(www\.)?crunchyroll\.com(\/[a-z]{2}(-[a-z]{2})?)?(\/(news|videos\/(anime|drama)))?\/?$/)) {
-		console.log("+++ !!! ---- Is splashlink site ! --- !!! +++")
-		replaceBackground_splashlink(settings);
+	if(!settings.customBackground || !settings.bg_url)
+		return;   
+	
+	var target_style = "background-image: url("+settings.bg_url+"); background-position: center 0px; background-attachment: fixed;";
+	var mutateNodeStyle = function(node) {
+		node.style.backgroundImage = 'url('+settings.bg_url+')';
+		node.style.backgroundPosition = 'center 0px';
+		node.style.backgroundAttachement = 'fixed';
 	}
+	
+	// Always replace body background image in case splashlink fails to load
+	replaceBackground_simple(mutateNodeStyle);
+	
+	if(window.location.href.match(/^https?:\/\/(www\.)?crunchyroll\.com(\/[a-z]{2}(-[a-z]{2})?)?(\/(news|videos\/(anime|drama)))?\/?$/)) {
+		//console.log("+++ !!! ---- Is splashlink site ! --- !!! +++");
+		replaceBackground_splashlink(mutateNodeStyle);
+	} /*else {
+		console.log("+++ !!! ---- Non splashlink site ! --- !!! +++");
+	}*/
 	
 }
 
-function replaceBackground_splashlink(settings) {
-	if(!settings.customBackground || !settings.bg_url)
-		return;    
-	
-	var target_style = "background-image: url("+settings.bg_url+"); background-position: center 0px; background-attachment: fixed;";
+function replaceBackground_splashlink(setStyle, target_style) {	
 	
     var targetNode = document.getElementById("template_skin_splashlink");
     if (targetNode !== null) {
-        targetNode.style = target_style;
+        //targetNode.style = target_style;
+		setStyle(targetNode);
 		//console.log("Replaced Bg at first try !");
     } else {
 		//TODO Replace with more elegant DOMMuationObserver
@@ -49,11 +61,20 @@ function replaceBackground_splashlink(settings) {
             var skin = document.querySelector('#template_skin_splashlink');
             if(skin !== null) {
                 clearInterval(poller);
-                skin.style = target_style;
+                //skin.style = target_style;
+				setStyle(skin);
             }
         }, 50);
     }
 }
 
-settings_query.then(replaceBackground, onError);
+function replaceBackground_simple(mutateStyleFun) {
+	var target = document.querySelector('body'); //Returns first body => main body, no iframe etc
+	if(!!target) mutateStyleFun(target);
+	else onError('No body in DOM! o_0'); 
+	//Remember: This is called at document_idle, if there's no body now, something went terribly wrong
+	// Also (www.)crunchyroll, does not have raw txt or img pages, they are at img1.ak and similar subdomains
+}
+
+settings_bg_query.then(replaceBackground, onError);
 

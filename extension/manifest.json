@@ -28,6 +28,12 @@
 	  
 	  "js": ["js/cs_player.js"],
 	  "run_at": "document_idle"
+	},
+	{
+	  "matches": ["https://www.crunchyroll.com/*"],
+	  
+	  "js": ["js/test.js"],
+	  "run_at": "document_idle"
 	}
   ],
 

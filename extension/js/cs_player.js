@@ -1,6 +1,6 @@
 'use strict';
 
-var settings_query = browser.storage.sync.get(["customPlayerSizes", "ps_16_9_x", "ps_16_9_y", "ps_5_3_x", "ps_5_3_y"]);
+var settings_pl_query = browser.storage.sync.get(["customPlayerSizes", "ps_16_9_x", "ps_16_9_y", "ps_5_3_x", "ps_5_3_y"]);
 
 function onError(e) {
 	console.log("Error: "+e);
@@ -50,5 +50,5 @@ function insertCustomPlayerSizes(settings) {
   
 }
 
-settings_query.then(mutatePlayer, onError);
+settings_pl_query.then(mutatePlayer, onError);
 
