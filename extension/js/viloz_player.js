@@ -1,3 +1,6 @@
+/*
+ * This file does NOT fall under the GPL license.
+ * */
 function VilosPlayer() {
     function a(a) {
         i.getCurrentTime(function(b) {
@@ -126,7 +129,7 @@ function VilosPlayer() {
         }), i.on("keydown", g), i.on("volumechange", function(a) {
             localStorage.setItem("vilosPreferredVolume", a.volume.toFixed(2))
         }), i.on("ended", function() {
-            /** false && c && (location.href = c)  /** this is dumb ! **/
+            /** false && c && (location.href = c)  //Apart from formatiing and comments this line is the only change from the source script
         })
     }
 }
