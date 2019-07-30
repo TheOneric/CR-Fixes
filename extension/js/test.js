@@ -1,19 +1,14 @@
 'use strict';
 
-var settings_query = browser.storage.sync.get(["customBackground", "bg_url"]);
+//var settings_test_query = browser.storage.sync.get(["bg_url"]);
 
-function onError(e) {
-	console.log("Error: "+e);
-}
 
 console.log("----   test.js loaded !   -----");
 
-function replaceBackground(settings) {
-	if(window.location.href.match(/^https?:\/\/(www\.)?crunchyroll\.com(\/[a-z]{2}(-[a-z]{2})?)?(\/(news|videos\/(anime|drama)))?\/?$/)) {
-		console.log("+++ !!! ---- Is splashlink site ! --- !!! +++")
-		replaceBackground_splashlink(settings);
-	}
-	
+var settings_ap_query = browser.storage.sync.get(["autoplay"]);
+
+function onError(e) {
+  console.log("Error: "+e);
 }
 
 //settings_query.then(mutatePlayer, onError);

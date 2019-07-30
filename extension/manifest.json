@@ -30,8 +30,17 @@
 	  "run_at": "document_idle"
 	},
 	{
-	  "matches": ["https://www.crunchyroll.com/*"],
-	  
+	  "matches": ["https://www.crunchyroll.com/*"],  
+	  "js": ["js/lib_darktheme.js", "js/cs_dt.js"],
+	  "run_at": "document_end"
+	},
+	{
+	  "matches": ["https://www.crunchyroll.com/*"],  
+	  "js": ["js/viloz_player.js", "js/cs_noautoplay.js"],
+	  "run_at": "document_start"
+	},
+	{
+	  "matches": ["https://www.crunchyroll.com/*"],  
 	  "js": ["js/test.js"],
 	  "run_at": "document_idle"
 	}
