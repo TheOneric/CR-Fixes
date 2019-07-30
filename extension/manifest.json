@@ -22,6 +22,12 @@
 	  ],
 	  "js": ["js/cs_bg.js"],
 	  "run_at": "document_idle"
+	},
+	{
+	  "matches": ["https://www.crunchyroll.com/*"],
+	  
+	  "js": ["js/cs_player.js"],
+	  "run_at": "document_idle"
 	}
   ],
 
