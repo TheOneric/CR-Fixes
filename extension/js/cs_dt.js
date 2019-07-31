@@ -29,16 +29,17 @@ function init(settings) {
 	
 	if(document.head)
 		crf_addDarktheme();
-	else {
+	else { 
+		//This is a weird case for all post-2014 browser but whatever,
+		// In the best case this case is a dead case
 		var counter = 0;
 		var poller = setInterval(function(){
-            var skin = document.querySelector('#template_skin_splashlink');
-            if(skin !== null) {
+            if(document.head !== null) {
                 clearInterval(poller);
              	crf_addDarktheme();
             }
 			counter++;
-			console.log("Polled "+counter+" times.");
+			console.log(counter+". poll of shame. You should really update/change your browser.");
 			if(counter > 75) {
 				clearInterval(poller);
 				console.log("[CRF] Failed to add darktheme due to hitting time limit.");

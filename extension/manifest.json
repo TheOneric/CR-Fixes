@@ -21,7 +21,7 @@
 		"https://www.crunchyroll.com/*"
 	  ],
 	  "exclude_globs": ["*/versioned_assets/*"],
-	  "js": ["js/cs_bg.js"],
+	  "js": ["js/lib_awaitMatch.js", "js/cs_bg.js"],
 	  "run_at": "document_idle"
 	},
 	{

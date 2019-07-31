@@ -52,26 +52,8 @@ function replaceBackground(settings) {
 
 function replaceBackground_splashlink(setStyle, target_style) {	
 	
-    var targetNode = document.getElementById("template_skin_splashlink");
-    if (targetNode !== null) {
-        //targetNode.style = target_style;
-		setStyle(targetNode);
-		//console.log("Replaced Bg at first try !");
-    } else {
-		//TODO Replace with more elegant DOMMuationObserver
-        //console.log("WARNING: Cannot replace background image, because 'template_skin_splashlink' does not exist ! \n Waiting for elemnt to be added.");
-		var counter = 0;
-        var poller = setInterval(function(){
-            var skin = document.querySelector('#template_skin_splashlink');
-            if(skin !== null) {
-                clearInterval(poller);
-                //skin.style = target_style;
-				setStyle(skin);
-            }
-			counter++;
-			if(counter > 25) clearInterval(poller);
-        }, 50);
-    }
+	awaitMatch('#template_skin_splashlink', n => {setStyle(n); console.log("**** found splash_link");});
+	return;
 }
 
 function replaceBackground_simple(mutateStyleFun) {
