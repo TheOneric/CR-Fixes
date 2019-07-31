@@ -56,7 +56,7 @@ If set to something other than *none*, the extension will try to set the video q
 Available values: *none*, *auto*, *1080*, *720*, *480*, *360*
 
 ### Subtitle Languages
-**Default: <empty string>**
+**Default: \<empty string\>**  
 If not empty the extension will try to set the subtitle language according to this option, regardless of the language of the crunchyroll website.
 The value of this setting will be processed as follows:  
 1. If the vidoe has a subtitle matching the first line of this value, it will be attempted to set this language
