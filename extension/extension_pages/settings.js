@@ -87,7 +87,7 @@ function loadOptions() {
 
 
 function restoreDefaults() {
-  if(!confirm("Are you sure you want to restore Default settings ?\n(Changes still need to bes saved afterwards)"))
+  if(!confirm("Are you sure you want to restore Default settings ?\n(Changes still need to be saved afterwards)"))
 	return;
   var prom = browser.storage.sync.set({
     autoplay: def_autoplay,
