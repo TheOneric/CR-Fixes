@@ -20,6 +20,7 @@
 	  "matches": [
 		"https://www.crunchyroll.com/*"
 	  ],
+	  "exclude_globs": ["*/versioned_assets/*"],
 	  "js": ["js/cs_bg.js"],
 	  "run_at": "document_idle"
 	},
@@ -31,6 +32,7 @@
 	},
 	{
 	  "matches": ["https://www.crunchyroll.com/*"],  
+	  "exclude_globs": ["*/versioned_assets/*"],
 	  "js": ["js/lib_darktheme.js", "js/cs_dt.js"],
 	  "run_at": "document_start"
 	},

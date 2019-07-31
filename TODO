@@ -1,7 +1,5 @@
 PRIO HIGH:
-- Generate viloz script dynamically to resolve future conflicts when integrating foreign (L)GPL code (viloz_player.js does not fall under GPL as it is copied from crunchyroll.com)
- However this does create a possible security risk, if the fetch of original script were to be manipulated, but then again: If an attakcer can manipulate this request, he could also manipulate the regular request happening without this plugin. But I need to think this through …
-- Add simple darktheme (with orange highlights if possible)
+
 
 PRIO MEDIUM:
 - Add hierachic subtitle selection (.subtitlesMenuItemSelector)

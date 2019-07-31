@@ -12,7 +12,7 @@ function onError(e) {
 
 function rejectEnforcedAutoplay(vilos_player_src) {
 	var viloz = vilos_player_src.replace(/"ended",function\(\)\{c&&\(location\.href=c\)\}\)\}\}$/, '"ended",function(){if(!!c) crf_onVideoEnd_dynamic(c);})}}');
-	console.log(viloz);
+	//console.log(viloz);
 }
 
 
