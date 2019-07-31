@@ -27,7 +27,17 @@ function onError(e) {
   //debugger;
 }
 
+function isPlayerPage(href) {
+	return href.match(/^https?:\/\/(www\.)?crunchyroll\.com(\/[a-z]{2}(-[a-z]{2})?)?\/[^\/]+\/episode-[^\/]+\/?$/);
+}
+
 function crf_onVideoEnd_dynamic(next_ep_link) {
+	if(!isPlayerPage(next_ep_link)) {
+		console.log("[CRF] Redirect to unrecognized episode page requested. Request denied.\
+      Page in question"+next_ep_link+"\
+      If this was a mistake please report this to https://github.com/TheOneric/CR-Fix.");
+		return;
+	}
 	browser.storage.sync.get(["autoplay"]).then(	function (res) {
 		if(res.autoplay) {
 			window.location.href = next_ep_link;
@@ -73,7 +83,7 @@ function init(settings) {
   );
 }
 
-if(window.location.href.match(/^https?:\/\/(www\.)?crunchyroll\.com(\/[a-z]{2}(-[a-z]{2})?)?\/[^\/]+\/episode-[^\/]+\/?$/)) {
+if(isPlayerPage(window.location.href)) {
 	settings_ap_query.then(init, onError);
 }
 
