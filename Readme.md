@@ -31,7 +31,7 @@ If set to *false* autoplay will be blocked.
 If set to *true* a custom css stylesheet will be injected into all normal crunchyroll.com pages with a dark color palette (with some ornage highlights).  
 If set to *false* no action is performed.  
 Set this to false, if you wish to keep the default style or if using a different extension or script to change the style of *crunchyroll.com* sites.
-**_If this setting is toggled via the popup menu and the active tab is a crunchyroll webpage, a preview of the darktheme/normal theme will be directly displayed._** For it to tkae full effect in **_saving is requiered_** and a refresh might be necessary if on a episode list page of a series.
+**_If this setting is toggled via the popup menu and the active tab is a crunchyroll webpage, a preview of the darktheme/normal theme will be directly displayed._** For it to take full effect **_saving is requiered_** and a refresh might also be necessary under certain conditions.<sup>[2](#crf_footnote2)</sup>
 ### Resize Player
 **Default: true**  
 If set to *true* the player container will be resized according to the values defined in the input boxes. The default resize values are meant to fill the width of the *template_container* object, to not interfere with a possible background image.
@@ -95,4 +95,6 @@ All stylesheets for crunchyroll.com are located in extension/css.
 None yet.
 
 
-<a name="crf_footnote1">1</a>: In fact the darktheme provided here is a modified version of tholinka's dark crunchyroll plugin, which can be found here: https://github.com/tholinka/Dark-Crunchyroll-Plugin
+<a name="crf_footnote1">1</a>: In fact the darktheme provided here is a modified version of tholinka's dark crunchyroll plugin, which can be found here: https://github.com/tholinka/Dark-Crunchyroll-Plugin  
+
+<a name="crf_footnote2">2</a>: If the active tab was a series overview page (where all the episodes are listed) a refresh is necessary to change the container colour. And for the dark/not-dark mode to take effect in other tabs, that were not active when toggling via popup, a refresh is also necessary.
