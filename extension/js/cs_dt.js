@@ -47,4 +47,16 @@ function init(settings) {
 	}
 }
 
+function messageEvent(msg) {
+	if(msg.command === "crf_removeDarktheme")
+		crf_removeDarktheme();
+	else if(msg.command === "crf_addDarktheme")
+		crf_addDarktheme();
+}
+
 settings_dt_query.then(init, onError);
+
+
+browser.runtime.onMessage.addListener(messageEvent);
+
+

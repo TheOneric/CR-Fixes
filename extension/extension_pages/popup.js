@@ -26,11 +26,43 @@ function saveOptions(e) {
 }
 
 function showAllSettings(e) {
-	console.log("Opening Settings Page …");
+	//console.log("Opening Settings Page …");
 	browser.runtime.openOptionsPage();
-	console.log("Opened Settings Page.");
+	//console.log("Opened Settings Page.");
+}
+
+function toggleDarkmode() {
+	var opt = document.getElementById('darktheme');
+	//console.log("Someone knocked … ");
+	if(!opt) return;
+	console.log("…");
+	browser.permissions.request({permissions: ["activeTab"]}).then(function(granted) {
+		if(!granted) return;
+		//console.log("Granted activeTab permission");
+		browser.tabs.query({active: true, currentWindow: true}).then(
+			function(tabs) {
+				if(!tabs[0].url) return;
+				if(!tabs[0].url.match(/^https?:\/\/(www\.)?crunchyroll\.com/)) {
+					//console.log("Not a crunchyroll page.");
+					return;
+				}
+				if(opt.checked) 
+					browser.tabs.sendMessage(tabs[0].id, {command: "crf_addDarktheme"});
+				else
+					browser.tabs.sendMessage(tabs[0].id, {command: "crf_removeDarktheme"});
+				//console.log("Sent message");
+			}
+		);
+	});
+}
+
+function init() {
+	document.getElementById('darktheme').addEventListener('change', toggleDarkmode);
+	console.log("Initialised popup.");
 }
 
 document.querySelector("form").addEventListener("submit", saveOptions);
 document.querySelector("#fullSettingsButton").addEventListener("click", showAllSettings);
+
+document.addEventListener("CRFSettingsLoaded", init);
 

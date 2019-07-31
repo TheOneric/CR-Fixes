@@ -62,6 +62,10 @@
   "permissions": [
 		"storage"
   ],
+  
+  "optional_permissions": [
+    "activeTab"
+  ],
 
   "options_ui": {
     "page": "extension_pages/settings_full.html"

@@ -20,7 +20,21 @@
 
 const CRF_DarkTheme_title = 'CRFDarkTheme';
 
+function crf_queryDTCSSElement() {
+	var dt = document.head;
+	if(!dt) { 
+		console.log("[CRF] Document does not hava a head; did we find a Dullahan … ?");
+		return;
+	}
+	dt = dt.querySelector('link[title="'+CRF_DarkTheme_title+'"]');
+	return dt;
+}
+
 function crf_addDarktheme() {
+	if(!!crf_queryDTCSSElement()) {
+		console.log("[CFR] Darktheme was already added !");
+		return;
+	}
 	var dt = document.createElement('link');
 	dt.rel = 'stylesheet';
 	dt.type = "text/css";
@@ -36,12 +50,7 @@ function crf_addDarktheme() {
 }
 
 function crf_removeDarktheme() {
-	var dt = document.getElementsByTagName('head')[0];
-	if(!dt) { 
-		console.log("[CRF] Document does not hava a head; di we find a Dullahan … ?");
-		return;
-	}
-	dt = dt.querySelector('link[title="'+CRF_DarkTheme_title+'"]');
+	var dt = crf_queryDTCSSElement();
 	if(!dt) {
 		console.log("[CRF] Darktheme was not yet added, so it cannot be removed.");
 		return;
