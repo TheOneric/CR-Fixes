@@ -59,22 +59,23 @@ function init(settings) {
     {
       if(event.target.src.match(/\/vilos_player.*\.js$/) ) {
 		  console.log("Vilos Player script detected !");
-  	      //Create replacement script
-          var replacement = event.target.cloneNode(true);
-          var parent_node = event.target.parentNode;
-          replacement.type = 'text/javascript';
-          replacement.src = browser.runtime.getURL("js/viloz_player.js");
+  	      
           //Remove original and define custom VilosPlayer
-          /* Simplying inserting the script like this unfortunately fails 'VilosPlayer not defined'
-          * (script probably still executed in extension environment instead of page env)
-          * parent_node.appendChild(replacement); */
+          var parent_node = event.target.parentNode;
           parent_node.removeChild(event.target);
-          // to make  VilosPlayer  available in page context we use window.eval
+          
+          // to make  VilosPlayer  available in page context we need to use window.eval
           // exporting VilosPlayer with 
           //    exportFunction(VilosPlayer, window, {defineAs: 'VilosPlayer'})
           // did not work because of access errors for properties of the player. 
           // My guess is, it has something to do with the use of this during definition (in extension context)
-          fetch(browser.runtime.getURL("js/viloz_player.js")).then(response => response.text(), onError).then(vp => window.eval(vp), onError);
+          //fetch(browser.runtime.getURL("js/viloz_player.js")).then(response => response.text(), onError).then(vp => window.eval(vp), onError);
+          //Load original script; modify it and create replacement script
+          //Due to unclear license conditions, we cannot download and modify the script beforehand to then insert it locally with browser.runtime.getURL()
+          fetch('https://www.crunchyroll.com/versioned_assets/js/components/vilos_player.07ba0994.js')
+            .then(response => response.text(), onError)
+            .then(src => src.replace(/"ended",function\(\)\{c&&\(location\.href=c\)\}\)\}\}$/, '"ended",function(){if(!!c) crf_onVideoEnd_dynamic(c);})}}'), onError)
+            .then(new_src => window.eval(new_src), onError);
           
           //Prevent original script from being executed
           event.preventDefault();

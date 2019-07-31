@@ -17,4 +17,34 @@
 *
 *	Copyright 2019  Oneric  https://github.com/TheOneric , https://oneric.de
 * */
+var settings_dt_query = browser.storage.sync.get(["darktheme"]);
 
+function onError(e) {
+	console.log("Error; "+e);
+}
+
+function init(settings) {
+	if(!settings.darktheme)
+		return;
+	
+	if(document.head)
+		crf_addDarktheme();
+	else {
+		var counter = 0;
+		var poller = setInterval(function(){
+            var skin = document.querySelector('#template_skin_splashlink');
+            if(skin !== null) {
+                clearInterval(poller);
+             	crf_addDarktheme();
+            }
+			counter++;
+			console.log("Polled "+counter+" times.");
+			if(counter > 75) {
+				clearInterval(poller);
+				console.log("[CRF] Failed to add darktheme due to hitting time limit.");
+			}
+        }, 10);
+	}
+}
+
+settings_dt_query.then(init, onError);

@@ -32,7 +32,7 @@ function replaceBackground(settings) {
 	var mutateNodeStyle = function(node) {
 		node.style.backgroundImage = 'url('+settings.bg_url+')';
 		node.style.backgroundPosition = 'center 0px';
-		node.style.backgroundAttachement = 'fixed';
+		node.style.backgroundAttachment = 'fixed';
 	}
 	
 	// Always replace body background image in case splashlink fails to load

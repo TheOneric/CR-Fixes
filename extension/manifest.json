@@ -32,11 +32,11 @@
 	{
 	  "matches": ["https://www.crunchyroll.com/*"],  
 	  "js": ["js/lib_darktheme.js", "js/cs_dt.js"],
-	  "run_at": "document_end"
+	  "run_at": "document_start"
 	},
 	{
 	  "matches": ["https://www.crunchyroll.com/*"],  
-	  "js": ["js/viloz_player.js", "js/cs_noautoplay.js"],
+	  "js": ["js/cs_noautoplay.js"],
 	  "run_at": "document_start"
 	},
 	{
