@@ -6,7 +6,7 @@
 
 This plugin attempts to add some functions to the crunchyroll webpage, that I felt were direly needed. Like **toggable autoplay**, so you can read the comments at the ned of the video without being interrupted by a redirect. **A dark mode** so you can watch your animes alone and in the darkness without burning your eyes.  
 All options can be disabled, so they do not conflict with your already existing customisations.
-In fact, most of what this extension does, can also be achieved by utilisng several other extensions and user scripts already available. [^1](In fact the darktheme provided here is a modification of tholinka's dark crunchyroll plugin, which can be found here: https://github.com/tholinka/Dark-Crunchyroll-Plugin) 
+In fact, most of what this extension does, can also be achieved by utilisng several other extensions and user scripts already available.<sup>[1](#crf_footnote1)</sup> 
 The exception of this is toggable autoplay; which I couldn't find anywhere else. And the **(still WIP)** hierachical subtitle language selection. So that you can define selection orders like:  
 `German (German) -> English -> Spanish (Spain) -> Off`  
 and the first of these languages available will be selected.
@@ -41,7 +41,7 @@ If set to *false*, no action will be taken.
 **Default 16:9:  960 x 540**  
 **Default 16:9:  960 x 576**  
 These customise the player size, if **Resize Player** is set to true. The values are set in pixel units. You may either enlarge or shrink the player. Minimum length is 0 and maximum length is 9999.
-
+<a name="myfootnote1">1</a>: Footnote content goes here
 ### Custom Background
 If set to *true*, the plugin will attempt to inject a custom background image into the body of all crunchyroll pages and redefine the image on alll template\_skin\_splashlink objects, if present, though the splashlink object will still be present and clickable.  
 If set to *false* no action will be taken.
@@ -95,3 +95,4 @@ All stylesheets for crunchyroll.com are located in extension/css.
 None yet.
 
 
+<a name="crf_footnote1">1</a>: In fact the darktheme provided here is a modified version of tholinka's dark crunchyroll plugin, which can be found here: https://github.com/tholinka/Dark-Crunchyroll-Plugin
