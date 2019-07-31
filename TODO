@@ -10,3 +10,4 @@ PRIO MEDIUM:
 
 PRIO LOW:
 - Fix Bug where Text/Number input in settings page is at start always disabled (easy workaround: toggle corresponding slider 2 times)
+- Update div#container.cf colour when darkmode is toggled via popup

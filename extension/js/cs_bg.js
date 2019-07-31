@@ -82,6 +82,7 @@ function replaceBackground_simple(mutateStyleFun) {
 	// Also (www.)crunchyroll, does not have raw txt or img pages, they are at img1.ak and similar subdomains
 }
 
+// TODO Update the colour when toggling darkmode via popup
 function colour_main_container(darktheme) {
 	var colour;
 
