@@ -26,7 +26,7 @@
 	},
 	{
 	  "matches": ["https://www.crunchyroll.com/*"],
-	  
+	  "include_globs": ["*/episode*"],
 	  "js": ["js/cs_player.js"],
 	  "run_at": "document_idle"
 	},
@@ -38,6 +38,7 @@
 	},
 	{
 	  "matches": ["https://www.crunchyroll.com/*"],  
+	  "include_globs": ["*/episode*"],
 	  "js": ["js/cs_noautoplay.js"],
 	  "run_at": "document_start"
 	},
