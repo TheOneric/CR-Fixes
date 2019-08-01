@@ -18,6 +18,7 @@
 	Copyright 2019  Oneric  https://github.com/TheOneric , https://oneric.de
 */
 
+
 /**
  * This waits until the first match of selector is found in the document and then executes a callback.
  *
@@ -29,40 +30,52 @@
  * */
 function awaitMatch(selector, onMatch, 
 			root = document.body,      /* characterData changes should not affect a selector match*/
-			mosettings = {attributes: true, characterData:false, childList: true, subtree: true}
+			mosettings = {attributes: true, characterData:false, childList: true, subtree: true},
+			minPollTime = 100,
+			maxPollTime = 500,
+			debug = false
 	) {
-	var state = {matched: false};
+
+/* Apparently there is no efficient way to get the corresponding Element object of a Node object
+ * thus the way more elegenat, and if it would work, more efficient approach, of 
+ * commit cf3c04f90fe1201d20c6134943389895e331df56 does not work  */
+	
+	var state = {matched: false, lastCall: Date.now(), lastMutant: Date.now()};
 	var mobserver;
-	var foundMatch = function(node) {state.matched = true; onMatch(node); mobserver.disconnect();}
-	function callback(mrecords) {
-		for(var i = 0; i < mrecords.length; i++) {
-			var m = null;
-			if(mrecords[i].type === "attributes")
-			{
-				if(mrecords[i].target.matches(selector))
-					m = mrecords[i];
-			}
-			else if(mrecords[i].type === "childList")
-			{
-				//Removal of nodes should not affect selector matches, thus we only check addedNodes
-				for(var j = 0; j < mrecords[i].addedNodes.length; j++) {
-					if(mrecords[i].addedNodes[j].matches(selector)) {
-						m = mrecords[i].addedNodes[j];
-						break;
-					}
-				}
-			}
-			else {
-				console.log("[CRF] Unexpected mrecord of unknown type:");
-				console.log(mrecords[i]);
-			}
-			
-			if(m !== null) {
-				foundMatch(m);
-				return;
-			}
-			
+	var funQ;
+	function foundMatch(node) {
+		state.matched = true; 
+		if(debug) console.log("Found selector:'"+selector+"'");
+		onMatch(node); 
+		mobserver.disconnect();
+		clearTimeout(funQ);
+	}
+
+	const searchFor = () => {
+		if(debug) console.log("Search now for : '"+selector+"'");
+		const m = root.querySelector(selector);
+		if (!!m) foundMatch(m);
+		state.lastCall = Date.now();
+	};
+	function callback(m, o) {
+		if(state.matched) {
+			console.log("Already matched but still receiving muataions …");
+			o.disconnect();
+			return;
 		}
+		var now = Date.now();
+		clearTimeout(funQ);
+		funQ = null;
+		if(now - state.lastMutation > (maxPollTime-minPollTime)*2/3+minPollTime) {
+			searchFor();
+		} else {
+			if(now-state.lastCall > maxPollTime) {
+				searchFor();
+			} else if(now-state.lastCall < minPollTime) {
+				funQ = setTimeout(searchFor, minPollTime);
+			}
+		}
+		state.lastMutant = now;
 	}
 
 	/* It is necessary to set up and initialise the MObserver BEFORE we check if element is already
@@ -71,7 +84,7 @@ function awaitMatch(selector, onMatch,
 	 * In order to deal with the possibility that mobserver might find a match before we can call our
 	 * 'initial' check, the state object was introduced.
 	 * */
-	mobserver = new MutationObserver(onMatch);
+	mobserver = new MutationObserver(callback);
 	mobserver.observe(root, mosettings);
 	var matches = root.querySelectorAll(selector);
 	if(matches.length > 0) {
@@ -81,5 +94,6 @@ function awaitMatch(selector, onMatch,
 			onMatch(matches[0]);
 		}
 	}
+	//	eval(``);
 }
 
