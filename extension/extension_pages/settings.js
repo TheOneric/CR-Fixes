@@ -25,6 +25,8 @@ var def_ps_5_3_x = 960;
 var def_ps_5_3_y = 576;
 var def_background = false;
 var def_bg_url = "";
+var def_quality = "none";
+var def_sub_lang = "";
 
 var event_crf_settings_loaded = new CustomEvent('CRFSettingsLoaded', {bubbles: true, cancelable: false});
 
@@ -48,6 +50,8 @@ function loadOptions() {
     var ps_5_3_y = document.getElementById('player-size-5-3-y');
     var bg = document.getElementById('customBackground');
     var bg_url = document.getElementById('bg-url');
+	var vq = document.getElementById('quality');
+	var sl = document.getElementById('sub-lang');
 	
 	// Easy Default case handling (no booleans)
     if(!!ps_16_9_x) ps_16_9_x.value = result.ps_16_9_x || def_ps_16_9_x;
@@ -55,6 +59,8 @@ function loadOptions() {
     if(!!ps_5_3_x) ps_5_3_x.value = result.ps_5_3_x || def_ps_5_3_x;
     if(!!ps_5_3_y) ps_5_3_y.value = result.ps_5_3_y || def_ps_5_3_y;
 	if(!!bg_url) bg_url.value = result.bg_url || def_bg_url;
+	if(!!sl) sl.value = result.sub_lang || def_sub_lang;
+	if(!!vq) vq.value = result.quality || def_quality;
 
 	//Messy
     if(!!ap) { 
@@ -98,7 +104,9 @@ function restoreDefaults() {
     ps_5_3_x: def_ps_5_3_x,
     ps_5_3_y: def_ps_5_3_y,
     customBackground: def_background,
-	bg_url: def_bg_url
+	bg_url: def_bg_url,
+	sub_lang: def_sub_lang,
+	quality: def_quality
   });
   prom.then(loadOptions, onError);
 }

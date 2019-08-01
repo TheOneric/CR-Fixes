@@ -97,21 +97,78 @@
 		 <input type="text" id="bg-url" placeholder="https://example.org/best-bg-ever.png" size="30" disabled>
 		</td>  
 	  </tr>
-	 </table>
+
 	 
-	 <div class="note">
-	 <span class="emph">About Background Images:</span>
-	  <ul>
-	   <li>
-		Due to security considerations, Firefox does NOT allow local files from your PC to be 
-		inserted in a page. Thus the background of you're choosing must be available on the 
-		internet. One possible easy way to achieve this is to upload your desired background Image
-		to your crunchyroll profile album and then copy the link.
-	   </li>
-	   <li>
-		A template background for 16:9 monitors can be found <a target="_blank" rel="noopener noreferrer" href="" id="bgTemplate">here</a>.
-	</div>
+	  <tr class="note">
+	   <td colspan="3">
+	    <span class="emph">About Background Images:</span>
+	    <ul>
+	     <li>
+		  Due to security considerations, Firefox does NOT allow local files from your PC to be 
+		  inserted in a page. Thus the background of you're choosing must be available on the 
+		  internet. One possible easy way to achieve this is to upload your desired background Image
+		  to your crunchyroll profile album and then copy the link.
+	     </li>
+	     <li>
+		  A template background for 16:9 monitors can be found <a target="_blank" rel="noopener noreferrer" href="" id="bgTemplate">here</a>.
+		 </li>
+	   </td>
+	  </tr>
+	
+	  <tr>
+		<th>
+		 <label> Videoquality </label> <!-- for="quality_none" -->
+		</th> <td colspan="3">
+		 <select id="quality" required>
+		  <option value="none"> none</option>
+		  <option value="240">  240P</option>
+		  <option value="360">  360P</option>
+		  <option value="480">  480P</option>
+		  <option value="720">  720P</option>
+		  <option value="1080">1080P</option>
+		 </select>
+		 <!--
+		 <label class="container"> none &nbsp;&nbsp;
+		  <input type="radio" name="choice" value="none">
+		  <span class="radiochoice"></span>
+		 </label>
+		 <label class="container"> 240P &nbsp;&nbsp;
+		  <input type="radio" name="choice" value="240P">
+		  <span class="radiochoice"></span>
+		 </label>
+		 <label class="container"> 360P &nbsp;&nbsp;
+		  <input type="radio" name="choice" value="360P">
+		  <span class="radiochoice"></span>
+		 </label>
+		 <label class="container"> 480P &nbsp;&nbsp;
+		  <input type="radio" name="choice" value="480P">
+		  <span class="radiochoice"></span>
+		 </label>
+		 <label class="container"> 720P &nbsp;&nbsp;
+		  <input type="radio" name="choice" value="720P">
+		  <span class="radiochoice"></span>
+		 </label>
+		 <label class="container"> 1080P
+		  <input type="radio" name="choice" value="1080P">
+		  <span class="radiochoice"></span>
+		 </label>
+		 -->
+		</td>
+	  </tr>
+	  
+	  <tr>
+	   <th>
+		<label for="sub-lang"> Subtitle Languages </label>
+	   </th> <td colspan="3">
+		<input type="text" id="sub-lang" 
+			placeholder="e.g.: 'German (Germany);English;Spanish (Spain)'"
+			size="30">
+	   </td>
+	  </tr>
+	 </table>
+
 	 <br />	
+
      <button type="submit">Save</button>
 	 <button type="button" id="restoreDefButton" style="float: right !important;">Restore Defaults</button>
     </form>

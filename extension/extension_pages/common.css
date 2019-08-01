@@ -86,3 +86,70 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+/** *************** Checkbox Stuff ******************* **/
+ /* Customize the label (the container) */
+.container {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 9px;
+  cursor: pointer;
+  font-size: 100%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom radio button */
+.radiochoice {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .radiochoice {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a orange background */
+.container input:checked ~ .radiochoice {
+  background-color: #F5922E;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.radiochoice:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .radiochoice:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .radiochoice:after {
+  top:4px;
+  left: 4px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: white;
+} 
+

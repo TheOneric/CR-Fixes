@@ -40,7 +40,9 @@ function saveOptions(e) {
     ps_5_3_x: document.getElementById('player-size-5-3-x').value,
     ps_5_3_y: document.getElementById('player-size-5-3-y').value,
     customBackground: document.getElementById('customBackground').checked,
-    bg_url: document.getElementById('bg-url').value
+    bg_url: document.getElementById('bg-url').value,
+	sub_lang: document.getElementById('sub-lang').value,
+	quality: document.getElementById('quality').value
   });
 }
 
