@@ -1,24 +1,9 @@
 PRIO HIGH:
+- Fix bug, that player controls are not fully accesible when player is enlarged
 
 
 PRIO MEDIUM:
-- Add hierachic subtitle selection (.subtitlesMenuItemSelector)
-   Useful resource:  https://greasyfork.org/en/scripts/374477-crunchyroll-video-utilities/code
-- Add option for default video quality
-   Useful resource (lgpl3): https://github.com/tholinka/Dark-Crunchyroll-Plugin/commit/d1bec3c7cf314e4d22b416ccd0d4e6eabd5660b1
 
-- Make sure darktheme css takes precedence (is last css in header, to get rid of blue links)
-
-- DT improvements:
-	Add 
-	.message-container a {
-		color: #cc720c;
-	}
-	rule
-	
-	Make sure own
-	.new-template-body .text-link
-	rule takes precedence
 
 
 PRIO LOW:
