@@ -5,19 +5,6 @@ PRIO HIGH:
 PRIO MEDIUM:
 
 
-- Make sure darktheme css takes precedence (is last css in header, to get rid of blue links)
-
-- DT improvements:
-	Add 
-	.message-container a {
-		color: #cc720c;
-	}
-	rule
-	
-	Make sure own
-	.new-template-body .text-link
-	rule takes precedence
-
 
 PRIO LOW:
 - Fix Bug where Text/Number input in settings page is at start always disabled (easy workaround: toggle corresponding slider 2 times)
