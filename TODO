@@ -1,13 +1,12 @@
 PRIO HIGH:
 
 
+
 PRIO MEDIUM:
-- Add hierachic subtitle selection (.subtitlesMenuItemSelector)
-   Useful resource:  https://greasyfork.org/en/scripts/374477-crunchyroll-video-utilities/code
-- Add option for default video quality
-   Useful resource (lgpl3): https://github.com/tholinka/Dark-Crunchyroll-Plugin/commit/d1bec3c7cf314e4d22b416ccd0d4e6eabd5660b1
+
 
 
 PRIO LOW:
 - Fix Bug where Text/Number input in settings page is at start always disabled (easy workaround: toggle corresponding slider 2 times)
 - Update div#container.cf colour when darkmode is toggled via popup
+

@@ -78,7 +78,7 @@ function awaitMatch(selector, onMatch,
 		state.lastMutant = now;
 	}
 
-	/* It is necessary to set up and initialise the MObserver BEFORE we check if element is already
+	/* It is necessary to set up and initialise the Mobserver BEFORE we check if element is already
 	 * present, as otherwise there is a timeframe between our intial check and the modserver.observe
 	 * call, where we might miss the change that produces the match.
 	 * In order to deal with the possibility that mobserver might find a match before we can call our
@@ -96,4 +96,35 @@ function awaitMatch(selector, onMatch,
 	}
 	//	eval(``);
 }
+
+
+
+
+function periodicCheck(selector, onMatch, 
+			root = document.body, 
+			pTime = 50,
+			debug = false) {
+
+	var m = root.querySelector(selector);
+	var c = 1;
+	if(m) {
+		if(debug) console.log("Found '"+selector+"' on first try");
+		onMatch(m);
+	} else {
+		var p = setInterval(() => {
+			++c;
+			m = root.querySelector(selector);
+			if(debug) console.log(c+". try: '"+selector+"-match: "+m);
+			if(!!m) {
+				console.log("Matched on "+c+". try.");
+				onMatch(m);
+				clearInterval(p);
+			}
+		}, pTime);
+	}
+
+}
+
+
+
 

@@ -43,11 +43,19 @@
 	  "run_at": "document_start"
 	},
 	{
-	  "matches": ["https://www.crunchyroll.com/*"],  
-	  "js": ["js/test.js"],
+	  "matches": [
+		"https://www.crunchyroll.com/*",
+		"https://static.crunchyroll.com/vilos/player.html",
+		"https://static.crunchyroll.com/vilos/player.html/"
+	  ],  
+	  "js": ["js/lib_awaitMatch.js", "js/cs_playerMenu.js"],
 	  "run_at": "document_idle"
 	}
   ],
+  
+  "background": {
+	"scripts": ["js/bg_injector.js"]
+  },
 
   "browser_action": {
     "default_icon": "icon-32.png",
@@ -60,7 +68,10 @@
   ],
 
   "permissions": [
-		"storage"
+	"*://www.crunchyroll.com/*",
+	"*://crunchyroll.com/*",
+	"*://static.crunchyroll.com/*",
+	"storage"
   ],
   
   "optional_permissions": [
