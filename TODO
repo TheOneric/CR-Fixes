@@ -7,19 +7,6 @@ PRIO MEDIUM:
 - Add option for default video quality
    Useful resource (lgpl3): https://github.com/tholinka/Dark-Crunchyroll-Plugin/commit/d1bec3c7cf314e4d22b416ccd0d4e6eabd5660b1
 
-- Make sure darktheme css takes precedence (is last css in header, to get rid of blue links)
-
-- DT improvements:
-	Add 
-	.message-container a {
-		color: #cc720c;
-	}
-	rule
-	
-	Make sure own
-	.new-template-body .text-link
-	rule takes precedence
-
 
 PRIO LOW:
 - Fix Bug where Text/Number input in settings page is at start always disabled (easy workaround: toggle corresponding slider 2 times)
