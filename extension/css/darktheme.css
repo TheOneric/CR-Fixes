@@ -584,6 +584,11 @@ a.pm-new-name,
 	color: #cc720c;
 }
 
+/** Aplies to crunchyroll.com/privacy **/
+.content-panel {
+	background: #313133;
+}
+
 /**** END LEGACY STYLES ****/
 
 .availability-notes-high{background-color:#28212c !important;border-color:#d98b32 !important;color:#efefef !important}
