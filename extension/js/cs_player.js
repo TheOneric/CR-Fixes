@@ -40,13 +40,15 @@ function insertCustomPlayerSizes(settings) {
   
   //Now remove conflicting showmedia_free_trial_signup if present
   var elem = document.getElementById('showmedia_free_trial_signup');
-  if(!!elem) elem.parentNode.removeChild(elem);
-  if(!!elem) console.log("Removed signup stuff !");
-  //We also need to move 'showmedia_about_new' downwards if player was enlarged
+  if(!!elem) {
+	elem.parentNode.removeChild(elem);
+	console.log("Removed signup stuff !");
+  }
+  //We also need to move '#sidebar' downwards if player was enlarged
   function max(a, b) { if (a>b) return a; else return b; }
   var offset = max(settings.ps_16_9_y, settings.ps_5_3_y) -360 +394 +25;
   if(!elem) offset -= 394;
-  document.getElementById('showmedia_about_new').style = 'padding-top: '+offset+'px;';
+  document.getElementById('sidebar').style = 'margin-top: '+offset+'px;';
   
 }
 
