@@ -168,12 +168,12 @@ a.block-link:hover {
 }
 
 .bb-quoters-end {
-	background: url(moz-extension://__MSG_@@extension_id__/images/quote_end.png) no-repeat;
+	background: url(moz-extension://__MSG_@@extension_id__/img/quote_end.png) no-repeat;
 	filter: invert(1) grayscale(1);
 }
 
 .bb-quoters {
-	background: url(moz-extension://__MSG_@@extension_id__/images/quote_start.png) no-repeat;
+	background: url(moz-extension://__MSG_@@extension_id__/img/quote_start.png) no-repeat;
 	filter: invert(1) grayscale(1);
 }
 
@@ -523,7 +523,7 @@ input.default-button:hover,
 /* Front Page View Count Bubble Transparency Fix */
 .welcome-news-views {
 	background-color: transparent;
-	background: url(moz-extension://__MSG_@@extension_id__/images/views-count-bubble.png) no-repeat;
+	background: url(moz-extension://__MSG_@@extension_id__/img/views-count-bubble.png) no-repeat;
 }
 
 /* New Calandar (http://www.crunchyroll.com/simulcastcalendar) */
@@ -595,7 +595,7 @@ a.pm-new-name,
 
 html{background-color:#242425 !important}body.main-page .ad-skin{background:transparent !important}body.main-page,#template_container.template-container,#template_body.old-template-body{background-color:#242425 !important;color:#efefef !important}#template_body.old-template-body{border:1px solid #ebb06c !important}
 
-.collection-carousel .collection-carousel-arrow{background-image:url(moz-extension://__MSG_@@extension_id__/images/arrows.png) !important}.dropdown-collection{background-image:url(moz-extension://__MSG_@@extension_id__/images/queue_dropdown_arrow.png) !important}
+.collection-carousel .collection-carousel-arrow{background-image:url(moz-extension://__MSG_@@extension_id__/img/arrows.png) !important}.dropdown-collection{background-image:url(moz-extension://__MSG_@@extension_id__/img/queue_dropdown_arrow.png) !important}
 
 .isolated-page-footer{background-color:#313133 !important;color:#efefef !important}
 
@@ -613,7 +613,7 @@ html{background-color:#242425 !important}body.main-page .ad-skin{background:tran
 
 .tooltip-message{background-color:#28212c !important;border-color:#d98b32 !important;color:#efefef !important}#top_background_box{color:#efefef !important}.comparison{background-color:#36363b !important;color:#efefef !important}.comparison .membership-price-picker .membership-price,.comparison .premium-comparison-gift-link a{color:#ef8810 !important}.comparison .premium-comparison-gift-link:hover a{color:#ffa43d !important}#premium_container .membership-crown{background-color:#efefef !important}
 
-.queue-sortable .queue-to-top{background:url(moz-extension://__MSG_@@extension_id__/images/queue_arrow.png) -3px 0 no-repeat !important}.queue-sortable .queue-wrapper,.queue-sortable .landscape-element,.queue-sortable .more-options{background-color:#313133 !important}.queue-sortable .short-desc,.queue-sortable .series-info,.queue-sortable .collection-carousel-overlay-top,.queue-sortable .collection-carousel-overlay-bottom{color:#efefef !important}.queue-sortable .series-data{color:#bebebe !important}.queue-sortable .short-desc{color:#dedede !important}.queue-sortable .collection-carousel-media-link .link,.queue-sortable .queue-controls .text-link{color:#ef8810 !important}.queue-sortable .collection-carousel-media-link .link:hover,.queue-sortable .queue-controls .text-link:hover{color:#ffa43d !important}body .queue-sortable .wrapper .landscape-element:active{background-color:#49494b !important}
+.queue-sortable .queue-to-top{background:url(moz-extension://__MSG_@@extension_id__/img/queue_arrow.png) -3px 0 no-repeat !important}.queue-sortable .queue-wrapper,.queue-sortable .landscape-element,.queue-sortable .more-options{background-color:#313133 !important}.queue-sortable .short-desc,.queue-sortable .series-info,.queue-sortable .collection-carousel-overlay-top,.queue-sortable .collection-carousel-overlay-bottom{color:#efefef !important}.queue-sortable .series-data{color:#bebebe !important}.queue-sortable .short-desc{color:#dedede !important}.queue-sortable .collection-carousel-media-link .link,.queue-sortable .queue-controls .text-link{color:#ef8810 !important}.queue-sortable .collection-carousel-media-link .link:hover,.queue-sortable .queue-controls .text-link:hover{color:#ffa43d !important}body .queue-sortable .wrapper .landscape-element:active{background-color:#49494b !important}
 
 #sidebar{color:#efefef !important}
 
