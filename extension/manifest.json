@@ -43,11 +43,8 @@
 	  "run_at": "document_start"
 	},
 	{
-	  "matches": [
-		"https://www.crunchyroll.com/*",
-		"https://static.crunchyroll.com/vilos/player.html",
-		"https://static.crunchyroll.com/vilos/player.html/"
-	  ],  
+	  "matches": ["https://www.crunchyroll.com/*"],  
+	  "include_globs": ["*/episode*"],  
 	  "js": ["js/lib_awaitMatch.js", "js/cs_playerMenu.js"],
 	  "run_at": "document_idle"
 	}
