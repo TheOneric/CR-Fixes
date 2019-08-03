@@ -625,3 +625,18 @@ html{background-color:#242425 !important}body.main-page .ad-skin{background:tran
 	color: #ef8810;
 }
 
+
+.new-template-body span a,
+.new-template-body li a {
+	color: #ef8810;
+}
+
+/* -- all other links -- *
+.new-template-body .block-link:hover,
+.new-template-body .wrapper a:hover a,
+.new-template-body a:hover h4,
+a.block-link:hover {
+	color: #ffa43d;
+}*/
+
+
