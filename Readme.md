@@ -45,6 +45,8 @@ If set to *false*, no action will be taken.
 These customise the player size, if **Resize Player** is set to true. The values are set in pixel units. You may either enlarge or shrink the player. Minimum length is 0 and maximum length is 9999.
 
 ### Custom Background
+**Default: false**  
+**Default URL: \<empty string\>**
 If set to *true*, the extension will attempt to inject a custom background image into the body of all crunchyroll pages and redefine the image on alll template\_skin\_splashlink objects, if present, though the splashlink object will still be present and clickable.  
 If set to *false* no action will be taken.
  
@@ -81,7 +83,7 @@ Clone this repo, build ant then either:
 * pack the contents of the *build* folder (without root folder) yourself and install from file
 
 ### addons.mozilla.com
-This extension will soon<sup>TM</sup> be avialable at https://addons.mozilla.org/
+This extension will soon<sup>TM</sup> be avialable at https://addons.mozilla.org/en-US/firefox/addon/cr-fixes/
 
 
 ## For Developers
