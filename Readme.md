@@ -76,14 +76,16 @@ Only requesting *Spanish* might yield either of these choices.
 
 
 ## Installation
-### GitHub-Method
-Clone this repo, build ant then either:
+### addons.mozilla.com
+This extension is now avialable at https://addons.mozilla.org/en-US/firefox/addon/cr-fixes/
+
+### Latest master commit
+Clone this repo, build and then either:
 * load as temporary extension
 * OR  
-* pack the contents of the *build* folder (without root folder) yourself and install from file
+* pack the contents of the *build* folder (without root folder) yourself and install from file in Firefox Dev after allowing unsigned installs
 
-### addons.mozilla.com
-This extension will soon<sup>TM</sup> be avialable at https://addons.mozilla.org/en-US/firefox/addon/cr-fixes/
+
 
 
 ## For Developers
@@ -97,8 +99,11 @@ Just run `make`.
 This will copy all the files inside the *extension* folder to the build folder (will be created if necessary) and process all `//#INCLUDE` instructions.
 
 ## Build Dependencies
-* `make`
+* `GNU make`
 * `awk`
+* `find`
+
+The build was tested with `GNU Make 4.1` ; `GNU Awk 4.1.4` and `find (GNU findutils) 4.7.0-git` on `GNU/Linux 5.0.0-20-generic x86_64`.
 
 ### File hierachy and file names
 All webpages and their corresponding scripts and css are located in extensions/extension_pages.  
