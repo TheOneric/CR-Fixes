@@ -42,5 +42,4 @@ clean:
 
 cleanBin:
 	rm -fr ./bin/
-	
 
