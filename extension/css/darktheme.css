@@ -589,6 +589,12 @@ a.pm-new-name,
 	background: #313133;
 }
 
+/** Series titles at
+ *  https://www.crunchyroll.com/forum/series **/
+.forum_series-display-title a {
+	color: #ccc;
+}
+
 /**** END LEGACY STYLES ****/
 
 .availability-notes-high{background-color:#28212c !important;border-color:#d98b32 !important;color:#efefef !important}
