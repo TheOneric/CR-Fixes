@@ -5,7 +5,36 @@
  *  is available under the conditions of the LGPLv3.
  *  
  *  This modified version is available under the conditions of the GPLv3.
+ *  
+ *  Copyright 2015-2019  Tyler Holinka (tholinka, https://github.com/tholinka)
+ *  Copyright 2019       Oneric (https://github.com/TheOneric)
  * */
+
+/**
+ Used color table:
+  $transparent-black: rgba(0, 0, 0, 0.45);
+
+  $box-background-color: #36363b;
+  $background-color-darker: #1b1b1b;
+  $background-color: #242425;
+  $background-color-lighter: #313133;
+  $background-color-lighter-lighter: #49494b;
+  $background-color-input: #454545;
+  $background-color-message-box: #28212c;
+  
+  $text-color-darker-darker: #bebebe;
+  $text-color-darker: #dedede;
+  $text-color: #efefef;
+  
+  $link-color-darker: #cc720c;
+  $link-color: #ef8810;
+  $link-color-hover: #ffa43d;
+  
+  $border-color: #ebb06c;
+  $border-color-message-box: #d98b32;
+**/
+ 
+
 
 /**** START LEGACY STYLES ****/
 /*** general ***/
