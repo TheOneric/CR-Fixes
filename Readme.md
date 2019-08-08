@@ -47,8 +47,13 @@ These customise the player size, if **Resize Player** is set to true. The values
 ### Custom Background
 **Default: false**  
 **Default URL: \<empty string\>**
-If set to *true*, the extension will attempt to inject a custom background image into the body of all crunchyroll pages and redefine the image on alll template\_skin\_splashlink objects, if present, though the splashlink object will still be present and clickable.  
+If set to *true*, the extension will attempt to inject a custom background image into the body of all crunchyroll pages and redefine the image on alll template\_skin\_splashlink objects, if present, though the splashlink object will still be present and clickable.
+How backgrounds set by users on their userpage are treted depnds on the *"Force background"* option.  
 If set to *false* no action will be taken.
+#### Force background
+**Default: false**  
+If set to *false* custom backgrounds on crunchyroll userpages are respected, but if a crunchyroll user did not set a background for their userpage, the background will be replaced.  
+If set to *true* the background chosen by the user of this extension will replace all other backgrounds.
  
 ### Default Video Quality
 **Default: none**  

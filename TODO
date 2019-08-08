@@ -4,7 +4,6 @@ PRIO HIGH:
 
 
 PRIO MEDIUM:
-- Do not set BG on user pages that already have custom bg (make optional)
 
 
 

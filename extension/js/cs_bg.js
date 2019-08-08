@@ -18,7 +18,7 @@
 	Copyright 2019  Oneric  https://github.com/TheOneric , https://oneric.de
 */
 
-var settings_bg_query = browser.storage.sync.get(["customBackground", "bg_url", "darktheme"]);
+var settings_bg_query = browser.storage.sync.get(["customBackground", "bg_url", "bg_force", "darktheme"]);
 
 function onError(e) {
 	console.log("Error: "+e);
@@ -28,15 +28,17 @@ function replaceBackground(settings) {
 	if(!settings.customBackground || !settings.bg_url)
 		return;   
 	
-	var target_style = "background-image: url("+settings.bg_url+"); background-position: center 0px; background-attachment: fixed;";
-	var mutateNodeStyle = function(node) {
+	
+	var mutateNodeStyle = function(node, force = false) {
+		if(!force && window.getComputedStyle(node, null).backgroundImage != 'none') return;
+		console.log("[CRF] Set bg …");
 		node.style.backgroundImage = 'url('+settings.bg_url+')';
 		node.style.backgroundPosition = 'center 0px';
 		node.style.backgroundAttachment = 'fixed';
 	}
 	
 	// Always replace body background image in case splashlink fails to load
-	replaceBackground_simple(mutateNodeStyle);
+	replaceBackground_simple(mutateNodeStyle, settings.bg_force);
 	
 	if(window.location.href.match(/^https?:\/\/(www\.)?crunchyroll\.com(\/[a-z]{2}(-[a-z]{2})?)?(\/((anime-)?news(.*)|videos\/(anime|drama)))?\/?$/)) {
 		//console.log("+++ !!! ---- Is splashlink site ! --- !!! +++");
@@ -50,15 +52,15 @@ function replaceBackground(settings) {
 	
 }
 
-function replaceBackground_splashlink(setStyle, target_style) {	
+function replaceBackground_splashlink(setStyle) {	
 	
-	awaitMatch('#template_skin_splashlink', n => {setStyle(n); console.log("**** found splash_link");});
+	awaitMatch('#template_skin_splashlink', n => {setStyle(n, true); console.log("**** found splash_link");});
 	return;
 }
 
-function replaceBackground_simple(mutateStyleFun) {
+function replaceBackground_simple(mutateStyleFun, force) {
 	var target = document.querySelector('body'); //Returns first body => main body, no iframe etc
-	if(!!target) mutateStyleFun(target);
+	if(!!target) mutateStyleFun(target, force);
 	else onError('No body in DOM! o_0'); 
 	//As this is called at document_idle, if there's no body now, something went terribly wrong
 	// Also (www.)crunchyroll, does not have raw txt or img pages, they are at img1.ak and similar subdomains

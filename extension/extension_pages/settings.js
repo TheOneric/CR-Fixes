@@ -25,6 +25,7 @@ var def_ps_5_3_x = 960;
 var def_ps_5_3_y = 576;
 var def_background = false;
 var def_bg_url = "";
+var def_bg_force = false;
 var def_quality = "none";
 var def_sub_lang = "";
 
@@ -50,6 +51,7 @@ function loadOptions() {
     var ps_5_3_y = document.getElementById('player-size-5-3-y');
     var bg = document.getElementById('customBackground');
     var bg_url = document.getElementById('bg-url');
+    var bg_force = document.getElementById('bg-force');
 	var vq = document.getElementById('quality');
 	var sl = document.getElementById('sub-lang');
 	
@@ -81,6 +83,10 @@ function loadOptions() {
 		if(typeof result.customBackground) bg.checked = result.customBackground;
 		else bg.checked = def_background;
 	}
+	if(!!bg_force) {
+		if(typeof result.bg_force) bg_force.checked = result.bg_force;
+		else bg_force.checked = def_bg_force;
+	}
 	
 	ap.dispatchEvent(event_crf_settings_loaded);
 	console.log(result);
@@ -105,6 +111,7 @@ function restoreDefaults() {
     ps_5_3_y: def_ps_5_3_y,
     customBackground: def_background,
 	bg_url: def_bg_url,
+	bg_force: def_bg_force,
 	sub_lang: def_sub_lang,
 	quality: def_quality
   });

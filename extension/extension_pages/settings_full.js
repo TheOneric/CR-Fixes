@@ -41,6 +41,7 @@ function saveOptions(e) {
     ps_5_3_y: document.getElementById('player-size-5-3-y').value,
     customBackground: document.getElementById('customBackground').checked,
     bg_url: document.getElementById('bg-url').value,
+	bg_force: document.getElementById('bg-force').checked,
 	sub_lang: document.getElementById('sub-lang').value,
 	quality: document.getElementById('quality').value
   });
