@@ -595,6 +595,11 @@ a.pm-new-name,
 	color: #ccc;
 }
 
+/** Applies to user pages **/
+.user-profile-interests td a {
+	color: #efefef
+}
+
 /**** END LEGACY STYLES ****/
 
 .availability-notes-high{background-color:#28212c !important;border-color:#d98b32 !important;color:#efefef !important}

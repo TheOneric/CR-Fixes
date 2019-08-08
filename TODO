@@ -1,12 +1,14 @@
 PRIO HIGH:
+- 
 
 
 
 PRIO MEDIUM:
+- Do not set BG on user pages that already have custom bg (make optional)
 
 
 
 PRIO LOW:
 - Fix Bug where Text/Number input in settings page is at start always disabled (easy workaround: toggle corresponding slider 2 times)
-- Update div#container.cf colour when darkmode is toggled via popup
+- Move div#container.cf colour to darkmode stylesheet, only add seperate style tag when no theme is used
 
