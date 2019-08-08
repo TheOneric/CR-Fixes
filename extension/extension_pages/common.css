@@ -23,6 +23,19 @@ body {
 	padding: 3pt;
 }
 
+a:link {
+	color: #ef8810;
+}
+
+a:visited {
+	color: #cc720c;
+}
+
+a:hover,
+a:active {
+	color: #ffa43d;
+}
+
 
 /****************** On-Off Slider Stuff ********************/
 .switch {
