@@ -77,6 +77,10 @@ E.g. the entry for German in the player menu is *German (German...*, so *German*
 If you wish to set Spanish, including the part after the parantheses might be necessary to match your desired language as the player has entries for *Spanish (Spain..* and *Spanish (Latin...*.
 Only requesting *Spanish* might yield either of these choices.
 
+### Experimental: Request DRM-free streams
+**Default: true**  
+When saving settings with this as *true*, and on browser start if this is set to *true*:
+Setting *"VILOS\_DRM\_ROLLOUT"* cookie to the non-drm value. As crunchyroll might stop respecting this cookie value at any time, this is marked as an experimental feature.
 
 
 
