@@ -17,8 +17,8 @@ IFS=.
 set -f
 for REPLY in $(cat "$1") ; do
 	i="$(echo "$i + 1" | bc)"
-	#echo "$i" 
-	if [ "$REPLY" -gt "$(eval echo \$$i)" ] ; then
+	#echo "$i: $REPLY $(eval echo \$$i)"
+	if [ $dif -eq 0 ] && [ "$REPLY" -gt "$(eval echo \$$i)" ] ; then
 		echo "[ERROR] Version to low !"
 		exit 2
 	elif [ "$REPLY" -ne "$(eval echo -n \$$i)" ] ; then
