@@ -9,10 +9,26 @@ all: build $(TARGET_DIRS:extension/%=build/%) $(addprefix build/,$(TARGET_FILES:
 
 #Creating binaries
 release: all bin release.version prerelease.version
-	#TODO
+	#Abort if preRelease Version is unsuitable
+	./checkVersion.sh release.version $(shell awk -f getVersion.awk build/manifest.json)
+	./checkVersion.sh prerelease.version $(shell awk -f getVersion.awk build/manifest.json)
+	#Build xpi
+	curVer=$(shell awk -v KEEPDOTS=1 -f getVersion.awk build/manifest.json); \
+	cd build; zip -r -FS ../bin/cr-fixes_v$${curVer}.xpi * ;
+	#Update last version information
+	curVer=$(shell awk -v KEEPDOTS=1 -f getVersion.awk build/manifest.json); \
+	echo $$curVer > release.version
 
 preRelease: all bin release.version prerelease.version
-	#TODO
+	#Abort if preRelease Version is unsuitable
+	./checkVersion.sh release.version $(shell awk -f getVersion.awk build/manifest.json)
+	./checkVersion.sh prerelease.version $(shell awk -f getVersion.awk build/manifest.json)
+	#Build xpi
+	curVer=$(shell awk -v KEEPDOTS=1 -f getVersion.awk build/manifest.json); \
+	cd build; zip -r -FS ../bin/cr-fixes_v$${curVer}-pre.xpi * ;
+	#Update last version information
+	curVer=$(shell awk -v KEEPDOTS=1 -f getVersion.awk build/manifest.json); \
+	echo $$curVer > prerelease.version
 
 
 #Directory rules
