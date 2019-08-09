@@ -56,38 +56,37 @@
   <g
      inkscape:label="Ebene 1"
      inkscape:groupmode="layer"
-     id="layer1"
-     transform="translate(-0.53453904,-169.37881)">
+     id="layer1">
     <rect
        style="fill:#363636;fill-opacity:1;stroke-width:0.26458332"
        id="rect3721"
        width="128"
        height="128"
-       x="0.53453904"
-       y="169.37881" />
+       x="0"
+       y="0" />
     <circle
        style="fill:#f47616;fill-opacity:1;stroke-width:0.26458332"
        id="path4528"
        cx="64"
-       cy="233.00002"
+       cy="64"
        r="64" />
     <circle
        style="fill:#363636;fill-opacity:1;stroke-width:0.26458332"
        id="path4530"
        cx="80"
-       cy="249.00002"
+       cy="80"
        r="64" />
     <circle
        style="fill:#f47616;fill-opacity:1;stroke-width:0.26458332"
        id="path4532"
        cx="76"
-       cy="245.00002"
+       cy="76"
        r="52" />
     <circle
        style="fill:#363636;fill-opacity:1;stroke-width:0.26458332"
        id="path4534"
        cx="56"
-       cy="225.00002"
+       cy="56"
        r="24" />
   </g>
 </svg>
