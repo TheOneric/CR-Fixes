@@ -65,7 +65,7 @@
 	"*://www.crunchyroll.com/*",
 	"*://crunchyroll.com/*",
 	"*://static.crunchyroll.com/*",
-	"storage"
+	"storage", "webNavigation"
   ],
   
   "optional_permissions": [

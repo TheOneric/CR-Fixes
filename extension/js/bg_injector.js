@@ -20,14 +20,20 @@
 
 
 function injectPlayerMenu(r, s, a) {
-	browser.tabs.executeScript(
-	  {
-		file: "/js/in_playerSettings.js",
-		//code: `console.log("Executed in-script from:"+window.location.href);`,
-		allFrames: true
-	  }
-	).then(	r => console.log("### Executed in all subframes. ####"), 
+	browser.webNavigation.getAllFrames( {tabId: s.tab.id}).then( farray => {
+	  const pf = farray.filter(f => f.url.match(/^https:\/\/static\.crunchyroll\.com\/vilos\/player\.html/) );
+	  console.log(pf);
+	  const fid = pf.length > 0 ? pf[0].frameId : -1;
+	  var details;
+	  if(fid === -1) details = {file: "/js/in_playerSettings.js", allFrames: true};
+	  else details = {file: "/js/in_playerSettings.js", frameId: fid};
+	  
+	  browser.tabs.executeScript(
+	   details
+	  ).then(	r => console.log("### Executed in "+(fid===-1?"all":"player")+" subframes. ####"), 
 			r => console.log("#### Error: "+r)
+	  )
+	 }, e => console.log("# Error: "+e)
 	);
 }
 
