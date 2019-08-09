@@ -25,8 +25,9 @@
   </head>
 
   <body>
-
+	<h1 class="hidden"> Settings</h1> 
     <form>
+	 <h2> General Settings </h2>
 	 <table>
 	  <tr>
 		<th>
@@ -174,7 +175,22 @@
 	  </tr>
 	 </table>
 
-	 <br />	
+	 <br />
+	 <hr>
+	 <h2>Experimental Settings</h2>
+	 <div class="note emph">
+		Experimental settings might not work, or might stop working at any time.
+	 </div>
+	 <table>
+	  <td>
+		<label class="container">
+			<input type="checkbox" id="no-drm">
+			<span class="checkmark"></span>
+		 </label>
+		 <label for="no-drm"> Request DRM-free Streams </label>
+	  </td>
+	 </table>
+	 <br />
 
      <button type="submit">Save</button>
 	 <button type="button" id="restoreDefButton" style="float: right !important;">Restore Defaults</button>

@@ -48,7 +48,7 @@
   ],
   
   "background": {
-	"scripts": ["js/bg_injector.js"]
+	"scripts": ["js/lib_cookie.js", "js/bg_injector.js"]
   },
 
   "browser_action": {
@@ -62,9 +62,9 @@
   ],
 
   "permissions": [
-	"*://www.crunchyroll.com/*",
+	"*://*.crunchyroll.com/*",
 	"*://crunchyroll.com/*",
-	"*://static.crunchyroll.com/*",
+	"cookies",
 	"storage"
   ],
   

@@ -28,6 +28,7 @@ var def_bg_url = "";
 var def_bg_force = false;
 var def_quality = "none";
 var def_sub_lang = "";
+var def_exp_no_drm = true;
 
 var event_crf_settings_loaded = new CustomEvent('CRFSettingsLoaded', {bubbles: true, cancelable: false});
 
@@ -54,6 +55,7 @@ function loadOptions() {
     var bg_force = document.getElementById('bg-force');
 	var vq = document.getElementById('quality');
 	var sl = document.getElementById('sub-lang');
+	var x_nd = document.getElementById('no-drm');
 	
 	// Easy Default case handling (no booleans)
     if(!!ps_16_9_x) ps_16_9_x.value = result.ps_16_9_x || def_ps_16_9_x;
@@ -80,12 +82,16 @@ function loadOptions() {
 		else ps.checked = def_playerResize;
 	}
 	if(!!bg) {
-		if(typeof result.customBackground) bg.checked = result.customBackground;
+		if(typeof result.customBackground != "undefined") bg.checked = result.customBackground;
 		else bg.checked = def_background;
 	}
 	if(!!bg_force) {
-		if(typeof result.bg_force) bg_force.checked = result.bg_force;
+		if(typeof result.bg_force != "undefined") bg_force.checked = result.bg_force;
 		else bg_force.checked = def_bg_force;
+	}
+	if(!!x_nd) {
+		if(typeof result.no_drm != "undefined") x_nd.checked = result.no_drm;
+		else x_nd.checked = def_exp_no_drm;
 	}
 	
 	ap.dispatchEvent(event_crf_settings_loaded);
@@ -113,7 +119,8 @@ function restoreDefaults() {
 	bg_url: def_bg_url,
 	bg_force: def_bg_force,
 	sub_lang: def_sub_lang,
-	quality: def_quality
+	quality: def_quality,
+	no_drm: def_exp_no_drm
   });
   prom.then(loadOptions, onError);
 }
