@@ -48,7 +48,7 @@
   ],
   
   "background": {
-	"scripts": ["js/lib_cookie.js", "js/bg_injector.js"]
+	"scripts": ["js/bg_injector.js"]
   },
 
   "browser_action": {
