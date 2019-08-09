@@ -19,8 +19,8 @@ release: all bin release.version prerelease.version
 
 preRelease: all bin release.version prerelease.version
 	#Abort if preRelease Version is unsuitable
-	./checkVersion.sh release.version $(shell awk -f getVersion.awk build/manifest.json)
-	./checkVersion.sh prerelease.version $(shell awk -f getVersion.awk build/manifest.json)
+	sh ./checkVersion.sh release.version $(shell awk -f getVersion.awk build/manifest.json)
+	sh ./checkVersion.sh prerelease.version $(shell awk -f getVersion.awk build/manifest.json)
 	#Build xpi  and  Update last version information
 	curVer=$(shell awk -v KEEPDOTS=1 -f getVersion.awk build/manifest.json) && \
 	( cd build; zip -r -FS ../bin/cr-fixes_v$${curVer}-pre.xpi * ) && \

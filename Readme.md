@@ -107,8 +107,10 @@ This will copy all the files inside the *extension* folder to the build folder (
 * `GNU make`
 * `awk`
 * `find`
+* Some POSIX-compliant shell available as `sh`
 
 The build was tested with `GNU Make 4.1` ; `GNU Awk 4.1.4` and `find (GNU findutils) 4.7.0-git` on `GNU/Linux 5.0.0-20-generic x86_64`.
+Known to work shells are `bash`, `bash --posix`, `dash` and `ash`.
 
 ### File hierachy and file names
 All webpages and their corresponding scripts and css are located in extensions/extension_pages.  
