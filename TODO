@@ -1,9 +1,12 @@
 PRIO HIGH:
-
-
+- Make sure all settings are assigned a value on startup
+ (Move var _Def_seeting to object DEFSET and iterate through components)
 
 
 PRIO MEDIUM:
+- Move all (debug,error,normal)logs into lib_util, prefix them with [CRF] 
+  and Make debug messsages toggable in experimental settings
+- Rename experimental settings to something more fitting
 
 
 

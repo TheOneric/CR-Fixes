@@ -26,7 +26,7 @@ It is also required to inject the playerSettings scripts into the player iframe 
 #### cookies
 Requiered for *"Experimental: Request DRM-free streams"*, see Settings section for details about what this does. Cookies can only be edited cookies for whose domains the host permission was granted.
 #### Host-permission: "\*//\*.crunchyroll.com/\*"
-Well, this extension changes stuff on www.crunchyroll.com. Also the player frame is loaded from static.crunchyroll.com, thus only requesting "*://www.crunchyroll.com/*"* would not be sufficient.  
+Well, this extension changes stuff on www.crunchyroll.com. Also the player frame is loaded from static.crunchyroll.com, thus only requesting "\*://www.crunchyroll.com/\*"* would not be sufficient.  
 As the cookies for *"Experimental: Request DRM-free streams"* must be set for the domains *.crunchyroll.com* (all subdomains), the extension also requests the host permission for all subdomains ionstead of only www and static.
 
 
