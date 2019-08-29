@@ -18,6 +18,7 @@
 *	Copyright 2019  Oneric  https://github.com/TheOneric , https://oneric.de
 * */
 
+//@require lib_general.js
 
 function injectPlayerMenu(r, s, a) {
 	browser.tabs.executeScript(
@@ -26,8 +27,8 @@ function injectPlayerMenu(r, s, a) {
 		//code: `console.log("Executed in-script from:"+window.location.href);`,
 		allFrames: true
 	  }
-	).then(	r => console.log("### Executed in all subframes. ####"), 
-			r => console.log("#### Error: "+r)
+	).then(	r => crfLogDebug("### Executed in all subframes. ####"), 
+			r => crfLogError(r)
 	);
 }
 
@@ -53,10 +54,10 @@ function requestListener(request, sender, response) {
 		setNoDRMCookie({no_drm: true});
 		break;
 	  default:
-		console.log("Unfamiliar request: "+request.command);
+		crfLogWarning("Unfamiliar request: "+request.command);
 	}
 }
 
 browser.runtime.onMessage.addListener(requestListener);
-browser.storage.sync.get(["no_drm"]).then(setNoDRMCookie, e => console.log("Error: "+e));
+browser.storage.sync.get(["no_drm"]).then(setNoDRMCookie, crfLogError);
 

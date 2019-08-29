@@ -19,12 +19,10 @@
 * */
 
 // run_at document_start
+//@require lib_general.js
 
 var settings_ap_query = browser.storage.sync.get(["autoplay"]);
 
-function onError(e) {
-  console.log("Error: "+e);
-}
 
 function isPlayerPage(href) {
 	return href.match(/^https?:\/\/(www\.)?crunchyroll\.com(\/[a-z]{2}(-[a-z]{2})?)?\/[^\/]+\/episode-[^\/]+\/?$/);
@@ -32,18 +30,18 @@ function isPlayerPage(href) {
 
 function crf_onVideoEnd_dynamic(next_ep_link) {
 	if(!isPlayerPage(next_ep_link)) {
-		console.log("[CRF] Redirect to unrecognized episode page requested. Request denied.\
-      Page in question"+next_ep_link+"\
+		crfLogError("Redirect to unrecognized episode page requested. Request denied.\
+      Page in question: "+next_ep_link+"\
       If this was a mistake please report this to https://github.com/TheOneric/CR-Fix.");
 		return;
 	}
 	browser.storage.sync.get(["autoplay"]).then(	function (res) {
 		if(res.autoplay) {
 			window.location.href = next_ep_link;
-			console.log("[CRF] Allow Autoplay. At least this time … (￣ヘ￣)"); 
+			crfLogDebug("Allow Autoplay. At least this time … (￣ヘ￣)"); 
 		}
-		else console.log("[CRF] Stopped Autoplay. <(￣︶￣)>");
-	}, onError
+		else crfLogDebug("[CRF] Stopped Autoplay. <(￣︶￣)>");
+	}, crfLogError
 	);
 }
 //Make above function available to be called from window context, to allow for dynamic dis/enabling of autoplay
@@ -57,7 +55,7 @@ function init(settings) {
     function(event)
     {
       if(event.target.src.match(/\/vilos_player.*\.js$/) ) {
-		  console.log("Vilos Player script detected !");
+		  crfLogInfo("Vilos Player script detected !");
   	      
           //Remove original and define custom VilosPlayer
           var parent_node = event.target.parentNode;
@@ -67,9 +65,9 @@ function init(settings) {
           // to make  VilosPlayer  available in page context we need to use window.eval
           //Due to unclear license conditions, we cannot download and modify the script beforehand to then insert it locally with browser.runtime.getURL()
           fetch('https://www.crunchyroll.com/versioned_assets/js/components/vilos_player.07ba0994.js')
-            .then(response => response.text(), onError)
-            .then(src => src.replace(/"ended",function\(\)\{c&&\(location\.href=c\)\}\)\}\}$/, '"ended",function(){if(!!c) crf_onVideoEnd_dynamic(c);})}}'), onError)
-            .then(new_src => window.eval(new_src), onError);
+            .then(response => response.text(), crfLogError)
+            .then(src => src.replace(/"ended",function\(\)\{c&&\(location\.href=c\)\}\)\}\}$/, '"ended",function(){if(!!c) crf_onVideoEnd_dynamic(c);})}}'), crfLogError)
+            .then(new_src => window.eval(new_src), crfLogError);
           
           //Prevent original script from being executed
           event.preventDefault();
@@ -79,6 +77,6 @@ function init(settings) {
 }
 
 if(isPlayerPage(window.location.href)) {
-	settings_ap_query.then(init, onError);
+	settings_ap_query.then(init, crfLogError);
 }
 

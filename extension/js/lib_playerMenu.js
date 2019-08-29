@@ -18,6 +18,8 @@
 	Copyright 2019  Oneric  https://github.com/TheOneric , https://oneric.de
 */
 
+//@require lib_general.js
+
 var QUALITY_SELECTOR = '.qualityMenuItemSelector';
 var SUBLANG_SELECTOR = '.subtitlesMenuItemSelector';
 var SETTING_SELECTOR = '.settingsMenuButton';
@@ -31,7 +33,7 @@ var CONTROL_BAR_IN_SELECTOR = '.vjs-control-bar.out'
 function setQuality(quality, selectedNode) {
 	if(!selectedNode) selectedNode = document.body.firstChild;
 	var all_options = selectedNode.parentNode.querySelectorAll(QUALITY_SELECTOR);
-	//console.log("QOpt["+all_options.length+"]: "+all_options)
+	//crfLogDebug("QOpt["+all_options.length+"]: "+all_options)
 	const filter = elem => {
 		if(!elem) { return false; }
 		else if(quality == "auto") {
@@ -43,11 +45,11 @@ function setQuality(quality, selectedNode) {
 	}
 	for(var i = 0; i < all_options.length; ++i) {
 		if(filter(all_options[i])) {
-			console.log("Found desired quality :  "+all_options[i]);
+			crfLogInfo("Found desired quality :  "+all_options[i]);
 			all_options[i].click();
 			return;
 		}
-		else {/*console.log("Is not desired qual :  "); console.log(all_options[i]);*/}
+		else {/*crfLogDebug("Is not desired qual :  "); crfLogDebug(all_options[i]);*/}
 	}
 }
 /*
@@ -58,16 +60,16 @@ function setSubLang(langs, selectedNode) {
 	if(!selectedNode) selectedNode = document.body.firstChild;
 	var all_options = selectedNode.parentNode.querySelectorAll(SUBLANG_SELECTOR);
 	var langOrder = langs.split(';');
-	//console.log("SLOpt["+all_options.length+"]: "+all_options);
-	//console.log("SLOrd["+langOrder.length+"]: "+langOrder);
+	//crfLogDebug("SLOpt["+all_options.length+"]: "+all_options);
+	//crfLogDebug("SLOrd["+langOrder.length+"]: "+langOrder);
 	for(var j = 0; j < langOrder.length; ++j) {
 		for(var i = 0; i < all_options.length; ++i) {
 			if(all_options[i].textContent.trim().startsWith(langOrder[j].trim())) {
-				console.log("Found desired sublang no."+j+" :  "+all_options[i].textContent);
+				crfLogInfo("Found desired sublang no."+j+" :  "+all_options[i].textContent);
 				all_options[i].click();
 				return;
 			}
-			else {/*console.log("Is not desired sublang no."+j+" :  "); console.log(all_options[i]);*/}
+			else {/*crfLogDebug("Is not desired sublang no."+j+" :  "); crfLogDebug(all_options[i]);*/}
 		}
 	}
 }

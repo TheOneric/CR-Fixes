@@ -18,14 +18,11 @@
 *	Copyright 2019  Oneric  https://github.com/TheOneric , https://oneric.de
 * */
 
-
-
 var settings_vt_query = browser.storage.sync.get(["quality", "sub_lang"]);
 
-function onError(e) {
-	console.log("Error: "+e);
-}
-
+////////////////////////////////////////  LIB_GENERAL.JS  //////////////////////////////////////////
+//#INCLUDE extension/js/lib_general.js
+//--------------------------------------  LIB_GENERAL.JS  ----------------------------------------//
 ///////////////////////////////////////  LIB_AWAITMATCH.JS  ////////////////////////////////////////
 //#INCLUDE extension/js/lib_awaitMatch.js
 //-------------------------------------  LIB_AWAITMATCH.JS  --------------------------------------//
@@ -37,13 +34,13 @@ function onError(e) {
 
 
 function choosePlayerSettings(esettings) {
-	console.log("Choose Quality:"+esettings.quality+"  –  Subs:"+esettings.sub_lang);
+	crfLogInfo("Choose Quality:"+esettings.quality+"  –  Subs:"+esettings.sub_lang);
 	if(esettings.quality && esettings.quality !== "none") {
 		//Wait for CR to init menu and selects its default based on cookies and whatnot
-		console.log("Search for: "+QUALITY_SELECTOR+''+SELECTED_ATTRIBUTE);
+		crfLogDebug("Search for: "+QUALITY_SELECTOR+''+SELECTED_ATTRIBUTE);
 		awaitMatch(QUALITY_SELECTOR+SELECTED_ATTRIBUTE, 
 			node => {
-				console.log(node);
+				crfLogDebug(node);
 				//If CR quality selection matches user's wishes, then there is nothing to do
 				if(!node.textContent.toLowerCase().includes(esettings.quality))
 					setQuality(esettings.quality, node);
@@ -51,11 +48,11 @@ function choosePlayerSettings(esettings) {
 		undefined, undefined, undefined, undefined, false);/**/
 	}
 	if(esettings.sub_lang && esettings.sub_lang !== "") {
-		console.log("Attempt to set SubLanguage …");
-		console.log("Search for: "+SUBLANG_SELECTOR+''+SELECTED_ATTRIBUTE);
+		crfLogDebug("Attempt to set SubLanguage …");
+		crfLogDebug("Search for: "+SUBLANG_SELECTOR+''+SELECTED_ATTRIBUTE);
 		awaitMatch(SUBLANG_SELECTOR+SELECTED_ATTRIBUTE, 
 			node => {
-				console.log(node);
+				crfLogDebug(node);
 				//If CR quality selection matches user's wishes, then there is nothing to do
     var firstOpt = esettings.sub_lang.split(';')[0].trim();
 	var currSLan = node.textContent.toString().trim();
@@ -73,11 +70,11 @@ function choosePlayerSettings(esettings) {
 
 
 if(window.location.href.match(/https:\/\/static\.crunchyroll\.com\/vilos\/player\.html/)) {	
-	console.log("Executed in-script from:"+window.location.href);
+	crfLogInfo("Executed in-script from:"+window.location.href);
 	//injectLibs();
-	settings_vt_query.then(choosePlayerSettings, onError);
+	settings_vt_query.then(choosePlayerSettings, crfLogError);
 } else {
-	console.log("Not a player-frame: "+window.location.href);
+	crfLogInfo("Not a player-frame: "+window.location.href);
 }
 
 //Set Promise return value

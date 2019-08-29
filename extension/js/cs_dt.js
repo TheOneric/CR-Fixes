@@ -17,11 +17,11 @@
 *
 *	Copyright 2019  Oneric  https://github.com/TheOneric , https://oneric.de
 * */
+
+//@require lib_general.js
+
 var settings_dt_query = browser.storage.sync.get(["darktheme"]);
 
-function onError(e) {
-	console.log("Error; "+e);
-}
 
 function init(settings) {
 	if(!settings.darktheme)
@@ -39,10 +39,10 @@ function init(settings) {
              	crf_addDarktheme();
             }
 			counter++;
-			console.log(counter+". poll of shame. You should really update/change your browser.");
+			crfLogWarning(counter+". poll of shame. You should really update/change your browser.");
 			if(counter > 75) {
 				clearInterval(poller);
-				console.log("[CRF] Failed to add darktheme due to hitting time limit.");
+				crfLogError("Failed to add darktheme due to hitting time limit.");
 			}
         }, 10);
 	}
@@ -55,7 +55,7 @@ function messageEvent(msg) {
 		crf_addDarktheme();
 }
 
-settings_dt_query.then(init, onError);
+settings_dt_query.then(init, crfLogError);
 
 
 browser.runtime.onMessage.addListener(messageEvent);

@@ -18,19 +18,16 @@
 	Copyright 2019  Oneric  https://github.com/TheOneric , https://oneric.de
 */
 
+//@require lib_general.js
 
-console.log("----   cs_playerMenu.js loaded !   -----");
-
-function onError(e) {
-	console.log("Error: "+e);
-}
+crfLogDebug("----   cs_playerMenu.js loaded !   -----");
 
 var settings_vt_query = browser.storage.sync.get(["quality", "sub_lang"]);
 
 function doStuff(settings) {
-  console.log("Attempt injection");
+  crfLogInfo("Attempt injection");
   awaitMatch('#vilos-player', p => {
-	console.log("Found player frame, try injection.");
+	crfLogInfo("Found player frame, try injection.");
 	browser.runtime.sendMessage(
 	  {
 		command: 'CRF_injectPlayerMenu'
@@ -41,5 +38,5 @@ function doStuff(settings) {
 }
 
 
-settings_vt_query.then(doStuff, onError);
+settings_vt_query.then(doStuff, crfLogError);
 
