@@ -6,3 +6,7 @@ td.sub-trd {
 	text-align: right;
 }
 
+table.advanced td {
+	padding-right: 2em;
+}
+

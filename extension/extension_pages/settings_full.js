@@ -44,7 +44,8 @@ function saveOptions(e) {
 	bg_force: document.getElementById('bg-force').checked,
 	sub_lang: document.getElementById('sub-lang').value,
 	quality: document.getElementById('quality').value,
-	no_drm: document.getElementById('no-drm').checked
+	no_drm: document.getElementById('no-drm').checked,
+	logLevel: document.getElementById('log-level').value
   });
   if(document.getElementById('no-drm').checked)
 	browser.runtime.sendMessage({command: "CRF_requestNonDRM"});

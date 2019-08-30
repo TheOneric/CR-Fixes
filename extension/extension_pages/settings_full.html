@@ -177,18 +177,29 @@
 
 	 <br />
 	 <hr>
-	 <h2>Experimental Settings</h2>
+	 <h2>Advanced Settings</h2>
 	 <div class="note emph">
-		Experimental settings might not work, or might stop working at any time.
+		Experimental (Ex:) settings might not work, or might stop working at any time.
 	 </div>
-	 <table>
+	 <table class="advanced">
+	  <tr>
 	  <td>
 		<label class="container">
 			<input type="checkbox" id="no-drm">
 			<span class="checkmark"></span>
 		 </label>
-		 <label for="no-drm"> Request DRM-free Streams </label>
+		 <label for="no-drm"> Ex: Request DRM-free Streams </label>
 	  </td>
+	  <td>
+		<label> Log-Level:&nbsp; </label> 
+		 <select id="log-level" required>
+		  <option value="E">Errors  </option>
+		  <option value="W">Warnings</option>
+		  <option value="I">Infos   </option>
+		  <option value="D">Debug   </option>
+		 </select>
+	  </td>
+	  </tr>
 	 </table>
 	 <br />
 

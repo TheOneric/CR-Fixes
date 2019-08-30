@@ -29,6 +29,7 @@ var def_bg_force = false;
 var def_quality = "none";
 var def_sub_lang = "";
 var def_exp_no_drm = true;
+var def_logLevel = "W";
 
 var event_crf_settings_loaded = new CustomEvent('CRFSettingsLoaded', {bubbles: true, cancelable: false});
 
@@ -56,6 +57,7 @@ function loadOptions() {
 	var vq = document.getElementById('quality');
 	var sl = document.getElementById('sub-lang');
 	var x_nd = document.getElementById('no-drm');
+	var a_ll = document.getElementById('log-level');
 	
 	// Easy Default case handling (no booleans)
     if(!!ps_16_9_x) ps_16_9_x.value = result.ps_16_9_x || def_ps_16_9_x;
@@ -65,6 +67,7 @@ function loadOptions() {
 	if(!!bg_url) bg_url.value = result.bg_url || def_bg_url;
 	if(!!sl) sl.value = result.sub_lang || def_sub_lang;
 	if(!!vq) vq.value = result.quality || def_quality;
+	if(!!a_ll) a_ll.value = result.logLevel || def_logLevel;
 
 	//Messy
     if(!!ap) { 
@@ -120,7 +123,8 @@ function restoreDefaults() {
 	bg_force: def_bg_force,
 	sub_lang: def_sub_lang,
 	quality: def_quality,
-	no_drm: def_exp_no_drm
+	no_drm: def_exp_no_drm,
+	logLevel: def_logLevel
   });
   prom.then(loadOptions, onError);
 }
