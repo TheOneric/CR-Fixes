@@ -25,10 +25,10 @@ W	1	Log Warnings and below
 E	0	Only log errors
 For storage purposes it is encouraged to use string values, as the numeric values may change in the future.
 */
-CRF_LOG_LEVEL = 1;
+var CRF_LOG_LEVEL = "D";
 browser.storage.sync.get(["logLevel"]).then(
-	s -> CRF_LOG_LEVEL = s.logLevel, 
-	e -> crfLogError("Unable to retrieve log level settings:\n"+e)
+	s => CRF_LOG_LEVEL = s.logLevel, 
+	e => crfLogError("Unable to retrieve log level settings:\n"+e)
 );
 
 
@@ -54,14 +54,17 @@ function crfLogDebug(msg) {
 	if(crfLogLevelComparsion("D", CRF_LOG_LEVEL) >= 0)
 		console.log("[CRF][DEBUG]: "+msg)
 }
+
 function crfLogInfo(msg) {
 	if(crfLogLevelComparsion("I", CRF_LOG_LEVEL) >= 0)
 		console.log("[CRF][INFO]: "+msg)
 }
+
 function crfLogWarning(msg) {
 	if(crfLogLevelComparsion("W", CRF_LOG_LEVEL) >= 0)
 		console.log("[CRF][WARNING]: "+msg)
 }
+
 function crfLogError(msg) {
 	if(crfLogLevelComparsion("E", CRF_LOG_LEVEL) >= 0)
 		console.log("[CRF][ERROR]: "+msg)

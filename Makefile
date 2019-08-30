@@ -39,7 +39,7 @@ bin:
 
 
 #Special file rules
-_IN_PLAYERSETTINGS_DEPENDENCIES := extension/js/in_playerSettings.js extension/js/lib_playerMenu.js extension/js/lib_awaitMatch.js extension/js/lib_general
+_IN_PLAYERSETTINGS_DEPENDENCIES := extension/js/in_playerSettings.js extension/js/lib_playerMenu.js extension/js/lib_awaitMatch.js extension/js/lib_general.js
 build/js/in_playerSettings.js: $(_IN_PLAYERSETTINGS_DEPENDENCIES)
 	awk -f include.awk $< > $@
 

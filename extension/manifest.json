@@ -24,31 +24,31 @@
 	{
 	  "matches": ["https://www.crunchyroll.com/*"],
 	  "include_globs": ["*/episode*"],
-	  "js": ["js/cs_player.js"],
+	  "js": ["js/lib_general.js", "js/cs_player.js"],
 	  "run_at": "document_idle"
 	},
 	{
 	  "matches": ["https://www.crunchyroll.com/*"],  
 	  "exclude_globs": ["*/versioned_assets/*"],
-	  "js": ["js/lib_darktheme.js", "js/cs_dt.js"],
+	  "js": ["js/lib_general.js", "js/lib_darktheme.js", "js/cs_dt.js"],
 	  "run_at": "document_start"
 	},
 	{
 	  "matches": ["https://www.crunchyroll.com/*"],  
 	  "include_globs": ["*/episode*"],
-	  "js": ["js/cs_noautoplay.js"],
+	  "js": ["js/lib_general.js", "js/cs_noautoplay.js"],
 	  "run_at": "document_start"
 	},
 	{
 	  "matches": ["https://www.crunchyroll.com/*"],  
 	  "include_globs": ["*/episode*"],  
-	  "js": ["js/lib_awaitMatch.js", "js/cs_playerMenu.js"],
+	  "js": ["js/lib_general.js", "js/lib_awaitMatch.js", "js/cs_playerMenu.js"],
 	  "run_at": "document_idle"
 	}
   ],
   
   "background": {
-	"scripts": ["js/bg_injector.js"]
+	"scripts": ["js/lib_general.js", "js/bg_injector.js"]
   },
 
   "browser_action": {

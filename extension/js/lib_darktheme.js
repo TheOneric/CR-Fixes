@@ -54,7 +54,7 @@ function crf_addDarktheme() {
 function crf_removeDarktheme() {
 	var dt = crf_queryDTCSSElement();
 	if(!dt) {
-		crfLogDebug(Darktheme was not yet added, so it cannot be removed.");
+		crfLogDebug("Darktheme was not yet added, so it cannot be removed.");
 		return;
 	}
 	dt.parentNode.removeChild(dt);
