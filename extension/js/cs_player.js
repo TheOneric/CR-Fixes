@@ -63,8 +63,8 @@ function insertCustomPlayerSizes(settings) {
   }
   //We also need to move '#sidebar' downwards if player was enlarged
   function max(a, b) { if (a>b) return a; else return b; }
-  var offset = max(settings.ps_16_9_y, settings.ps_5_3_y) -360 +394 +25;
-  if(!elem) offset -= 394;
+  var offset = max(settings.ps_16_9_y, settings.ps_5_3_y) -360 +341;
+  if(!elem) offset -= 555;
   document.getElementById('sidebar').style = 'margin-top: '+offset+'px;';
   
 }
