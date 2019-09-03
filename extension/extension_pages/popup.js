@@ -61,6 +61,8 @@ function init() {
 	console.log("Initialised popup.");
 }
 
+document.addEventListener("DOMContentLoaded", loadOptions);
+
 document.querySelector("form").addEventListener("submit", saveOptions);
 document.querySelector("#fullSettingsButton").addEventListener("click", showAllSettings);
 

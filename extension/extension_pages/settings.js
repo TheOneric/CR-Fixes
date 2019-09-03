@@ -129,7 +129,7 @@ function restoreDefaults() {
   prom.then(loadOptions, onError);
 }
 
-document.addEventListener("DOMContentLoaded", loadOptions);
+//document.addEventListener("DOMContentLoaded", loadOptions);
 
 
 

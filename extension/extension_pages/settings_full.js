@@ -74,7 +74,7 @@ function init() {
 
 
 
-
+document.addEventListener("DOMContentLoaded", loadOptions);
 
 document.querySelector("form").addEventListener("submit", saveOptions);
 document.querySelector("#restoreDefButton").addEventListener("click", restoreDefaults);

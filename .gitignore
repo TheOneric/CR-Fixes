@@ -3,3 +3,6 @@ ignore/**
 build/**
 bin/**
 
+# Tmp and Test-Files
+test.js
+
