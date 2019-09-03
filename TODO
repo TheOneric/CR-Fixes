@@ -1,12 +1,11 @@
 PRIO HIGH:
-- Make sure all settings are assigned a value on startup
- (Move var _Def_seeting to object DEFSET and iterate through components)
-
+- Find and eliminate bug where sub and quality injection sometimes fails even in the active tab
+  ( possibly permission request is rejected because not directly in event handler ? )
 
 PRIO MEDIUM:
 
 
-
 PRIO LOW:
 - Move div#container.cf colour to darkmode stylesheet, only add seperate style tag when no theme is used
+- Add OPTIONAL (Advanced setting) mode for injection where 'tabs' permission is requested so that injection also works in not-active tabs
 

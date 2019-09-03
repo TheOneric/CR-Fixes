@@ -19,6 +19,7 @@
 * */
 
 //@require lib_general.js
+//@require ../extension_pages/settings.js
 
 function injectPlayerMenu(r, s, a) {
 	browser.tabs.executeScript(
@@ -59,5 +60,8 @@ function requestListener(request, sender, response) {
 }
 
 browser.runtime.onMessage.addListener(requestListener);
+
+// Tasks todo on Extension startup 
 browser.storage.sync.get(["no_drm"]).then(setNoDRMCookie, crfLogError);
+initUnsetSettings();
 

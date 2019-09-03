@@ -48,7 +48,7 @@
   ],
   
   "background": {
-	"scripts": ["js/lib_general.js", "js/bg_injector.js"]
+	"scripts": ["js/lib_general.js", "extension_pages/settings.js", "js/bg_injector.js"]
   },
 
   "browser_action": {

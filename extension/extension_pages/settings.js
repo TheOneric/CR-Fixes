@@ -16,20 +16,25 @@
 *    along with CR-Fixes.  If not, see <http://www.gnu.org/licenses/>.
 **/
 
-var def_autoplay = false;
-var def_darktheme = true;
-var def_playerResize = true;
-var def_ps_16_9_x = 960;
-var def_ps_16_9_y = 540;
-var def_ps_5_3_x = 960;
-var def_ps_5_3_y = 576;
-var def_background = false;
-var def_bg_url = "";
-var def_bg_force = false;
-var def_quality = "none";
-var def_sub_lang = "";
-var def_exp_no_drm = true;
-var def_logLevel = "W";
+/** Default settings of the crf extension */
+const CRF_DEF_SETTS = {
+	autoplay: 			false,
+	darktheme:			true,
+	customPlayerSizes:	true,
+	ps_16_9_x:			960,
+	ps_16_9_y:			540,
+	ps_5_3_x:			960,
+	ps_5_3_y:			576,
+	customBackground:	false,
+	bg_url:				"",
+	bg_force:			false,
+	quality:			"none",
+	sub_lang:			"",
+	//Advanced and experimental settings
+	no_drm:		true,
+	logLevel:	"W"
+};
+
 
 var event_crf_settings_loaded = new CustomEvent('CRFSettingsLoaded', {bubbles: true, cancelable: false});
 
@@ -60,41 +65,41 @@ function loadOptions() {
 	var a_ll = document.getElementById('log-level');
 	
 	// Easy Default case handling (no booleans)
-    if(!!ps_16_9_x) ps_16_9_x.value = result.ps_16_9_x || def_ps_16_9_x;
-    if(!!ps_16_9_y) ps_16_9_y.value = result.ps_16_9_y || def_ps_16_9_y;
-    if(!!ps_5_3_x) ps_5_3_x.value = result.ps_5_3_x || def_ps_5_3_x;
-    if(!!ps_5_3_y) ps_5_3_y.value = result.ps_5_3_y || def_ps_5_3_y;
-	if(!!bg_url) bg_url.value = result.bg_url || def_bg_url;
-	if(!!sl) sl.value = result.sub_lang || def_sub_lang;
-	if(!!vq) vq.value = result.quality || def_quality;
-	if(!!a_ll) a_ll.value = result.logLevel || def_logLevel;
+    if(!!ps_16_9_x) ps_16_9_x.value = result.ps_16_9_x || CRF_DEF_SETTS.ps_16_9_x;
+    if(!!ps_16_9_y) ps_16_9_y.value = result.ps_16_9_y || CRF_DEF_SETTS.ps_16_9_y;
+    if(!!ps_5_3_x) ps_5_3_x.value = result.ps_5_3_x || CRF_DEF_SETTS.ps_5_3_x;
+    if(!!ps_5_3_y) ps_5_3_y.value = result.ps_5_3_y || CRF_DEF_SETTS.ps_5_3_y;
+	if(!!bg_url) bg_url.value = result.bg_url || CRF_DEF_SETTS.bg_url;
+	if(!!sl) sl.value = result.sub_lang || CRF_DEF_SETTS.sub_lang;
+	if(!!vq) vq.value = result.quality || CRF_DEF_SETTS.quality;
+	if(!!a_ll) a_ll.value = result.logLevel || CRF_DEF_SETTS.logLevel;
 
 	//Messy
     if(!!ap) { 
 		if(typeof result.autoplay != "undefined")
 			ap.checked = result.autoplay;
 		else
-			ap.checked = def_autoplay;
+			ap.checked = CRF_DEF_SETTS.autoplay;
 	}
     if(!!dt) {
 		if(typeof result.darktheme != "undefined") dt.checked = result.darktheme;
-		else dt.checked = def_darktheme;
+		else dt.checked = CRF_DEF_SETTS.darktheme;
 	}
 	if(!!ps) {
 		if(typeof result.customPlayerSizes != "undefined") ps.checked = result.customPlayerSizes;
-		else ps.checked = def_playerResize;
+		else ps.checked = CRF_DEF_SETTS.customPlayerSizes;
 	}
 	if(!!bg) {
 		if(typeof result.customBackground != "undefined") bg.checked = result.customBackground;
-		else bg.checked = def_background;
+		else bg.checked = CRF_DEF_SETTS.customBackground;
 	}
 	if(!!bg_force) {
 		if(typeof result.bg_force != "undefined") bg_force.checked = result.bg_force;
-		else bg_force.checked = def_bg_force;
+		else bg_force.checked = CRF_DEF_SETTS.bg_force;
 	}
 	if(!!x_nd) {
 		if(typeof result.no_drm != "undefined") x_nd.checked = result.no_drm;
-		else x_nd.checked = def_exp_no_drm;
+		else x_nd.checked = CRF_DEF_SETTS.no_drm;
 	}
 	
 	ap.dispatchEvent(event_crf_settings_loaded);
@@ -110,24 +115,36 @@ function loadOptions() {
 function restoreDefaults() {
   if(!confirm("Are you sure you want to restore Default settings ?\n(Changes still need to be saved afterwards)"))
 	return;
-  var prom = browser.storage.sync.set({
-    autoplay: def_autoplay,
-    darktheme: def_playerResize,
-    customPlayerSizes: def_playerResize,
-    ps_16_9_x: def_ps_16_9_x,
-    ps_16_9_y: def_ps_16_9_y,
-    ps_5_3_x: def_ps_5_3_x,
-    ps_5_3_y: def_ps_5_3_y,
-    customBackground: def_background,
-	bg_url: def_bg_url,
-	bg_force: def_bg_force,
-	sub_lang: def_sub_lang,
-	quality: def_quality,
-	no_drm: def_exp_no_drm,
-	logLevel: def_logLevel
-  });
+  var prom = browser.storage.sync.set(CRF_DEF_SETTS);
   prom.then(loadOptions, onError);
 }
+
+/** 
+ This function checks for unset options and sets them to default.
+ This has its usecase after an upgrade, that introduced new options, or after initial install.
+ In the future this function might also do conversion and/or removal of deprecated options.
+*/
+function initUnsetSettings() {
+  browser.storage.sync.get().then(
+	currentSetts => {
+	  const options = Object.keys(CRF_DEF_SETTS);
+	  var toSet = {};
+	  for(var i = 0; i < options.length; ++i) {
+		if(!Object.prototype.hasOwnProperty.call(currentSetts, options[i])) {
+		  console.log("!! Option "+options[i]+" not yet set !!");
+		  toSet[options[i]] = CRF_DEF_SETTS[options[i]];
+		}
+	  }
+	  if(Object.keys(toSet).length > 0) {
+		console.log("Push defaults for unset options:\n");
+		console.log(toSet);
+		browser.storage.sync.set(toSet);
+	  }
+	},
+	onError
+  );
+}
+
 
 //document.addEventListener("DOMContentLoaded", loadOptions);
 
