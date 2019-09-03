@@ -4,13 +4,9 @@ PRIO HIGH:
 
 
 PRIO MEDIUM:
-- Move all (debug,error,normal)logs into lib_util, prefix them with [CRF] 
-  and Make debug messsages toggable in experimental settings
-- Rename experimental settings to something more fitting
 
 
 
 PRIO LOW:
-- Fix Bug where Text/Number input in settings page is at start always disabled (easy workaround: toggle corresponding slider 2 times)
 - Move div#container.cf colour to darkmode stylesheet, only add seperate style tag when no theme is used
 

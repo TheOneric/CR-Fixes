@@ -21,7 +21,7 @@
 function disenableAll() {
     var bg = document.getElementById('customBackground').checked;
     var ps = document.getElementById('customPlayerSizes').checked;
-	console.log("[disenAll] bg:"+bg+"  ;  ps:"+ps);
+	//console.log("[disenAll] bg:"+bg+"  ;  ps:"+ps);
     document.getElementById('bg-url').disabled = !bg;
     document.getElementById('player-size-16-9-x').disabled = !ps;
     document.getElementById('player-size-16-9-y').disabled = !ps;
@@ -52,13 +52,9 @@ function saveOptions(e) {
 }
 
 function init() {
-	console.log("-- Start Init");
-	//TODO: Bug: For some reason all checkboxes appear to be unchecked when executing here,
-	//		 but are fine when called from 'change' event
-	//       As this doesn't cause any problems and can easily be fixed by toggling two times
-	//		 fixing this has a low priority right now
+	//console.log("-- Start Init");
 	disenableAll(); 
-	console.log("-- Init succesfull !");
+	//console.log("-- Init succesfull !");
 
 	document.addEventListener("DOMContentLoaded", function (event) {
 	    var _selector = document.getElementById('customBackground');
@@ -80,7 +76,7 @@ document.querySelector("form").addEventListener("submit", saveOptions);
 document.querySelector("#restoreDefButton").addEventListener("click", restoreDefaults);
 
 // Init Dis/Enable states 
-document.addEventListener("CRFSettingsLoaded", init());
+document.addEventListener("CRFSettingsLoaded", init);
 
 
 

@@ -1,5 +1,11 @@
 #Changelog (end-user features only)
 
+##Version 1.1.1
+**IN PROGRESS**
++ added LogLevel setting
+* generalised "Experimental" settings section to "Advanced" section, with a special prefix for experimental settings
+* fixed bug causing player-size and bg-url input boxes to be falsely disabled
+
 ##Version 1.1.0 (pre)
 + added experimental "Request DRM-free streams" feautre
 + added Readme link as help link in settings page
