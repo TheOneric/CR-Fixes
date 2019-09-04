@@ -21,13 +21,14 @@ Alright, here are all permissions requested by this extension, as well as a shor
 #### storage
 This is needed to save the settings
 #### activeTab
-This is an optional permission, that will be requested on runtime to dynamically update the theme of the current tab as a preview of what this theme looks like. This happens when the theme is changed via the popup menu.  
+This is an optional permission, that might be requested on runtime, though usually the request is silently granted by the browser without any need for user interaction.
+It is required to dynamically update the theme of the current tab as a preview of what this theme looks like. This happens when the theme is changed via the popup menu.  
 It is also required to inject the playerSettings scripts into the player iframe (along with the host permissions for www and static.crunchyroll.com).
 #### cookies
 Requiered for *"Experimental: Request DRM-free streams"*, see Settings section for details about what this does. Cookies can only be edited cookies for whose domains the host permission was granted.
 #### Host-permission: "\*//\*.crunchyroll.com/\*"
 Well, this extension changes stuff on www.crunchyroll.com. Also the player frame is loaded from static.crunchyroll.com, thus only requesting "\*://www.crunchyroll.com/\*"* would not be sufficient.  
-As the cookies for *"Experimental: Request DRM-free streams"* must be set for the domains *.crunchyroll.com* (all subdomains), the extension also requests the host permission for all subdomains ionstead of only www and static.
+As the cookies for *"Experimental: Request DRM-free streams"* must be set for the domains *.crunchyroll.com* (all subdomains), the extension also requests the host permission for all subdomains instead of only www and static.
 
 
 ## Settings
@@ -69,11 +70,13 @@ If set to *true* the background chosen by the user of this extension will replac
  
 ### Default Video Quality
 **Default: none**  
+*If not default value, 'activeTab' permission is required*  
 If set to something other than *none*, the extension will try to set the video quality to the given value when the page is loaded.  
 Available values: *none*, *auto*, *1080*, *720*, *480*, *360*, *240*
 
 ### Subtitle Languages
 **Default: \<empty string\>**  
+*If not default value, 'activeTab' permission is required*  
 If not empty the extension will try to set the subtitle language according to this option, regardless of the language of the crunchyroll website.
 The value of this setting will be processed as follows:  
 1. If the value is an empty string, no action will be taken.
@@ -89,10 +92,16 @@ E.g. the entry for German in the player menu is *German (German...*, so *German*
 If you wish to set Spanish, including the part after the parantheses might be necessary to match your desired language as the player has entries for *Spanish (Spain..* and *Spanish (Latin...*.
 Only requesting *Spanish* might yield either of these choices.
 
+## Advanced Settings
+
 ### Experimental: Request DRM-free streams
 **Default: true**  
 When saving settings with this as *true*, and on browser start if this is set to *true*:
 Setting *"VILOS\_DRM\_ROLLOUT"* cookie to the non-drm value. As crunchyroll might stop respecting this cookie value at any time, this is marked as an experimental feature.
+
+### Log Level
+**Default: Warnings**  
+Tells the extension what messages should be logged to console. By default only errors and warnings are logged. When submitting error reports, please use *"Debug"* for logs.
 
 
 
@@ -104,7 +113,7 @@ This extension is now avialable at https://addons.mozilla.org/en-US/firefox/addo
 Clone this repo, build and then either:
 * load as temporary extension
 * OR  
-* pack the contents of the *build* folder (without root folder) yourself and install from file in Firefox Dev after allowing unsigned installs
+* pack the contents of the *build* folder (without root folder) yourself and install from file in Firefox after allowing unsigned installs
 
 
 

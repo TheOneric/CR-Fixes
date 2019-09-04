@@ -3,7 +3,7 @@ PRIO HIGH:
   ( possibly permission request is rejected because not directly in event handler ? )
 
 PRIO MEDIUM:
-- Update Readme with new settings introduced with 1.1.1 (and possibly 1.1.0, in case I forgot to add any of them previously)
+
 
 PRIO LOW:
 - Move div#container.cf colour to darkmode stylesheet, only add seperate style tag when no theme is used

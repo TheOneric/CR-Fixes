@@ -1,5 +1,9 @@
 #Changelog (end-user features only)
 
+##Version 1.1.2
+* now request 'activeTab' permission when using quality or sublang settings
+* this might fix injection failure bug ?
+
 ##Version 1.1.1 (pre)
 + added LogLevel setting
 * Address vilos_player script update, which broke autoplay disable
