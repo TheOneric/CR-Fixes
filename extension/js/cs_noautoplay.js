@@ -40,7 +40,7 @@ function crf_onVideoEnd_dynamic(next_ep_link) {
 			window.location.href = next_ep_link;
 			crfLogDebug("Allow Autoplay. At least this time … (￣ヘ￣)"); 
 		}
-		else crfLogDebug("[CRF] Stopped Autoplay. <(￣︶￣)>");
+		else crfLogDebug("Stopped Autoplay. <(￣︶￣)>");
 	}, crfLogError
 	);
 }
@@ -69,8 +69,8 @@ function init(settings) {
 			//Previous Vilos player version 07ba0994
             //.then(src => src.replace(/"ended",function\(\)\{c&&\(location\.href=c\)\}\)\}\}$/, '"ended",function(){if(!!c) crf_onVideoEnd_dynamic(c);})}}'), crfLogError)
 			//Current version (7e305b26)
-			.then(src => src.replace(/\(location.href=([^)]*(".*")?)+\)/g, '(crf_onVideoEnd_dynamic($1))'), crfLogError)
-            .then(new_src => {console.log(new_src); window.eval(new_src);}, crfLogError);
+			.then(src => src.replace(/\(location.href=([^)]*("[^"]*")?)+\)/g, '(crf_onVideoEnd_dynamic($1))'), crfLogError)
+            .then(new_src => {crfLogDebug(new_src); window.eval(new_src);}, crfLogError);
           
           //Prevent original script from being executed
           event.preventDefault();
