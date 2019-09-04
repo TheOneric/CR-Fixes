@@ -64,10 +64,13 @@ function init(settings) {
           //Load original script; modify it and create replacement script
           // to make  VilosPlayer  available in page context we need to use window.eval
           //Due to unclear license conditions, we cannot download and modify the script beforehand to then insert it locally with browser.runtime.getURL()
-          fetch('https://www.crunchyroll.com/versioned_assets/js/components/vilos_player.07ba0994.js')
+          fetch(event.target.src) //fetch the uptodate vilos player script
             .then(response => response.text(), crfLogError)
-            .then(src => src.replace(/"ended",function\(\)\{c&&\(location\.href=c\)\}\)\}\}$/, '"ended",function(){if(!!c) crf_onVideoEnd_dynamic(c);})}}'), crfLogError)
-            .then(new_src => window.eval(new_src), crfLogError);
+			//Previous Vilos player version 07ba0994
+            //.then(src => src.replace(/"ended",function\(\)\{c&&\(location\.href=c\)\}\)\}\}$/, '"ended",function(){if(!!c) crf_onVideoEnd_dynamic(c);})}}'), crfLogError)
+			//Current version (7e305b26)
+			.then(src => src.replace(/\(location.href=([^)]*(".*")?)+\)/g, '(crf_onVideoEnd_dynamic($1))'), crfLogError)
+            .then(new_src => {console.log(new_src); window.eval(new_src);}, crfLogError);
           
           //Prevent original script from being executed
           event.preventDefault();
