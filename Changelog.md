@@ -1,8 +1,8 @@
 #Changelog (end-user features only)
 
-##Version 1.1.1
-**IN PROGRESS**
+##Version 1.1.1 (pre)
 + added LogLevel setting
+* Address vilos_player script update, which broke autoplay disable
 * all settings not yet set are now assigned default value on startup
 * generalised "Experimental" settings section to "Advanced" section, with a special prefix for experimental settings
 * fixed bug causing player-size and bg-url input boxes to be falsely disabled
