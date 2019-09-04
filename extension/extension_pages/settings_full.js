@@ -31,7 +31,7 @@ function disenableAll() {
 
 function saveOptions(e) {
   e.preventDefault();
-  browser.storage.sync.set({
+  const setts = {
     autoplay: document.getElementById('autoplay').checked,
     darktheme: document.getElementById('darktheme').checked,
     customPlayerSizes: document.getElementById('customPlayerSizes').checked,
@@ -46,9 +46,11 @@ function saveOptions(e) {
 	quality: document.getElementById('quality').value,
 	no_drm: document.getElementById('no-drm').checked,
 	logLevel: document.getElementById('log-level').value
-  });
-  if(document.getElementById('no-drm').checked)
+  };
+  browser.storage.sync.set(setts);
+  if(setts.no_drm)
 	browser.runtime.sendMessage({command: "CRF_requestNonDRM"});
+  requestPermissions(setts);
 }
 
 function init() {

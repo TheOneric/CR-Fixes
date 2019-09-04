@@ -124,7 +124,7 @@
 	
 	  <tr>
 		<th>
-		 <label> Videoquality </label> <!-- for="quality_none" -->
+		 <label> Videoquality <span class="note-activeTab-perm">*</span> </label> <!-- for="quality_none" -->
 		</th> <td colspan="3">
 		 <select id="quality" required>
 		  <option value="none"> none</option>
@@ -166,7 +166,7 @@
 	  
 	  <tr>
 	   <th>
-		<label for="sub-lang"> Subtitle Languages </label>
+		<label for="sub-lang"> Subtitle Languages <span class="note-activeTab-perm">*</span></label>
 	   </th> <td colspan="3">
 		<input type="text" id="sub-lang" 
 			placeholder="e.g.: 'German; English; Spanish (Spain...; Off'"
@@ -212,6 +212,14 @@
 		</a>.
 	 </div>
     </form>
+	
+	
+	<table style="font-size: 80%; padding-top:3em;">
+	  <tr>
+		<th class="note-activeTab-perm"> * </th>
+		<td> Requires the optional 'activeTab' permission to work properly. Usually <strong>no user interaction is required</strong> for this. <!--If enabled 'tabs' can be used instead.--> </td>
+	  </tr>
+	</table>
 
     <script type="text/javascript" src="settings.js"></script>
 	<script type="text/javascript" src="settings_full.js"></script>

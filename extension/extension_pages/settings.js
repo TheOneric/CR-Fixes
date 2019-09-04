@@ -32,7 +32,10 @@ const CRF_DEF_SETTS = {
 	sub_lang:			"",
 	//Advanced and experimental settings
 	no_drm:		true,
-	logLevel:	"W"
+	logLevel:	"W",
+	useTabsPermission: false,
+	//Information about setting version (used for setting conversion if necessary)
+	version: 1
 };
 
 
@@ -144,6 +147,30 @@ function initUnsetSettings() {
 	onError
   );
 }
+
+
+/**
+ Requests permissions if necessary for passed settings
+ @return a promis that will be resolved with true if required permissions were granted and false otherwise
+*/
+function requestPermissions(setts) {
+	var toReq = [];
+	var addToSet = (arr, e) => {if(arr.indexOf(e) === -1) arr.push(e);}
+	
+	if(
+	 (Object.prototype.hasOwnProperty.call(setts, "quality") && setts["quality"] !== CRF_DEF_SETTS.quality)
+  || (Object.prototype.hasOwnProperty.call(setts, "sub_lang") && setts["sub_lang"] !== CRF_DEF_SETTS.sub_lang)
+	) {
+		if(setts["useTabsPermission"] == true)
+			addToSet(toReq, "tabs");
+		else
+			addToSet(toReq, "activeTab");
+	}
+
+	
+	return browser.permissions.request({permissions: toReq});
+}
+
 
 
 //document.addEventListener("DOMContentLoaded", loadOptions);
