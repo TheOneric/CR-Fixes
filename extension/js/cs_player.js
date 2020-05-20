@@ -65,6 +65,10 @@ function insertCustomPlayerSizes(settings) {
   function max(a, b) { if (a>b) return a; else return b; }
   var offset = max(settings.ps_16_9_y, settings.ps_5_3_y) -360 +341;
   if(!elem) offset -= 522;
+  // On preview episode pages we need an additional shift down
+  elem = document.querySelector('.showmedia-trailer-notice');
+  if(!!elem)
+		offset += elem.offsetHeight;
   document.getElementById('sidebar').style = 'margin-top: '+offset+'px;';
   
 }
