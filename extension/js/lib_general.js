@@ -51,27 +51,27 @@ function crfLog(level, msg) {
 }
 
 function crfLogDebug(msg) {
-	if(crfLogLevelComparsion("D", CRF_LOG_LEVEL) >= 0)
+	if(crfLogLevelComparsion("D", CRF_LOG_LEVEL) <= 0)
 		console.log("[CRF][DEBUG]: "+msg)
 }
 
 function crfLogInfo(msg) {
-	if(crfLogLevelComparsion("I", CRF_LOG_LEVEL) >= 0)
+	if(crfLogLevelComparsion("I", CRF_LOG_LEVEL) <= 0)
 		console.log("[CRF][INFO]: "+msg)
 }
 
 function crfLogWarning(msg) {
-	if(crfLogLevelComparsion("W", CRF_LOG_LEVEL) >= 0)
+	if(crfLogLevelComparsion("W", CRF_LOG_LEVEL) <= 0)
 		console.log("[CRF][WARNING]: "+msg)
 }
 
 function crfLogError(msg) {
-	if(crfLogLevelComparsion("E", CRF_LOG_LEVEL) >= 0)
+	if(crfLogLevelComparsion("E", CRF_LOG_LEVEL) <= 0)
 		console.log("[CRF][ERROR]: "+msg)
 }
 
 
-/** 
+/**
 @return Negative if lv1 < lv2; 0 if lv1 === lv2; Positive if lv1 > lv2; \
 	    NaN if lv1 or lv2 are not valid logLevels
 */
