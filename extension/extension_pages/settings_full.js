@@ -45,7 +45,8 @@ function saveOptions(e) {
 	sub_lang: document.getElementById('sub-lang').value,
 	quality: document.getElementById('quality').value,
 	no_drm: document.getElementById('no-drm').checked,
-	logLevel: document.getElementById('log-level').value
+	logLevel: document.getElementById('log-level').value,
+	sendSegmentId: document.getElementById('send-segment-id').checked
   };
   browser.storage.sync.set(setts);
   if(setts.no_drm)

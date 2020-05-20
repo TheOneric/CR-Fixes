@@ -34,6 +34,7 @@ const CRF_DEF_SETTS = {
 	no_drm:		true,
 	logLevel:	"W",
 	useTabsPermission: false,
+	sendSegmentId: false,
 	//Information about setting version (used for setting conversion if necessary)
 	version: 1
 };
@@ -66,6 +67,7 @@ function loadOptions() {
 	var sl = document.getElementById('sub-lang');
 	var x_nd = document.getElementById('no-drm');
 	var a_ll = document.getElementById('log-level');
+	var ssi = document.getElementById('send-segment-id');
 	
 	// Easy Default case handling (no booleans)
     if(!!ps_16_9_x) ps_16_9_x.value = result.ps_16_9_x || CRF_DEF_SETTS.ps_16_9_x;
@@ -103,6 +105,10 @@ function loadOptions() {
 	if(!!x_nd) {
 		if(typeof result.no_drm != "undefined") x_nd.checked = result.no_drm;
 		else x_nd.checked = CRF_DEF_SETTS.no_drm;
+	}
+	if(!!ssi) {
+		if(typeof result.sendSegmentId != "undefined") ssi.checked = result.sendSegmentId;
+		else ssi.checked = CRF_DEF_SETTS.sendSegmentId;
 	}
 	
 	ap.dispatchEvent(event_crf_settings_loaded);

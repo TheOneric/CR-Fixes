@@ -20,7 +20,7 @@
 
 //@require lib_general.js
 
-var settings_pl_query = browser.storage.sync.get(["customPlayerSizes", "ps_16_9_x", "ps_16_9_y", "ps_5_3_x", "ps_5_3_y"]);
+var settings_pl_query = browser.storage.sync.get(["customPlayerSizes", "ps_16_9_x", "ps_16_9_y", "ps_5_3_x", "ps_5_3_y", "sendSegmentId"]);
 
 
 function mutatePlayer(settings) {
@@ -28,7 +28,7 @@ function mutatePlayer(settings) {
 		crfLogInfo("---- Is Player Page ! ---")
 
 		if(settings.customPlayerSizes) insertCustomPlayerSizes(settings);
-		
+		if(settings.sendSegmentId) dispatchCustomSegmentId();
 	}
 	
 }
@@ -67,6 +67,14 @@ function insertCustomPlayerSizes(settings) {
   if(!elem) offset -= 522;
   document.getElementById('sidebar').style = 'margin-top: '+offset+'px;';
   
+}
+
+function dispatchCustomSegmentId() {
+  var trebeckSeg = new CustomEvent('SEGMENT_IDENTIFY_EXECUTED',
+    { detail: { segment_anonymous_id: 'no' }
+  });
+  document.dispatchEvent(trebeckSeg);
+  crfLogDebug("Dispatched custom Segment_ID_Event.");
 }
 
 settings_pl_query.then(mutatePlayer, crfLogError);
