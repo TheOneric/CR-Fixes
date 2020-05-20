@@ -56,12 +56,10 @@ function init() {
 	disenableAll();
 	//console.log("-- Init succesfull !");
 
-	document.addEventListener("DOMContentLoaded", function (event) {
-	    var _selector = document.getElementById('customBackground');
-	    _selector.addEventListener('change', disenableAll);
-		var _selector = document.getElementById('customPlayerSizes');
-	    _selector.addEventListener('change', disenableAll);
-	});
+    var _selector = document.getElementById('customBackground');
+    _selector.addEventListener('change', disenableAll);
+	var _selector = document.getElementById('customPlayerSizes');
+    _selector.addEventListener('change', disenableAll);
 
 	document.getElementById('bgTemplate').href = browser.runtime.getURL("img/cr-background-template.png");
 	
