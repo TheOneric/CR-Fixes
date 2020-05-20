@@ -6,3 +6,8 @@ bin/**
 # Tmp and Test-Files
 test.js
 
+# Editor files, bak and old
+*.bak
+*.swp
+*.old
+
