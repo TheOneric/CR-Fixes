@@ -44,19 +44,16 @@ function saveOptions(e) {
 	bg_force: document.getElementById('bg-force').checked,
 	sub_lang: document.getElementById('sub-lang').value,
 	quality: document.getElementById('quality').value,
-	no_drm: document.getElementById('no-drm').checked,
 	logLevel: document.getElementById('log-level').value,
 	sendSegmentId: document.getElementById('send-segment-id').checked
   };
   browser.storage.sync.set(setts);
-  if(setts.no_drm)
-	browser.runtime.sendMessage({command: "CRF_requestNonDRM"});
   requestPermissions(setts);
 }
 
 function init() {
 	//console.log("-- Start Init");
-	disenableAll(); 
+	disenableAll();
 	//console.log("-- Init succesfull !");
 
 	document.addEventListener("DOMContentLoaded", function (event) {

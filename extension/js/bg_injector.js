@@ -33,26 +33,11 @@ function injectPlayerMenu(r, s, a) {
 	);
 }
 
-function setNoDRMCookie(settings) {
-	if(!settings.no_drm) return;
-	browser.cookies.set({
-		domain: ".crunchyroll.com",
-		expirationDate: 0x7fffffff * 1e3,
-		path: "/",
-		name: "VILOS_DRM_ROLLOUT",
-		value: "7fc56270e7a70fa81a5935b72eacbe29_1",
-		httpOnly: false,
-		url: "https://www.crunchyroll.com/"
-	});
-}
 
 function requestListener(request, sender, response) {
 	switch(request.command) {
 	  case "CRF_injectPlayerMenu":
 		injectPlayerMenu(request, sender, response);
-		break;
-	  case "CRF_requestNonDRM":
-		setNoDRMCookie({no_drm: true});
 		break;
 	  default:
 		crfLogWarning("Unfamiliar request: "+request.command);
@@ -61,7 +46,6 @@ function requestListener(request, sender, response) {
 
 browser.runtime.onMessage.addListener(requestListener);
 
-// Tasks todo on Extension startup 
-browser.storage.sync.get(["no_drm"]).then(setNoDRMCookie, crfLogError);
+// Tasks todo on Extension startup
 initUnsetSettings();
 

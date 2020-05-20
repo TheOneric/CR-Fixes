@@ -31,7 +31,6 @@ const CRF_DEF_SETTS = {
 	quality:			"none",
 	sub_lang:			"",
 	//Advanced and experimental settings
-	no_drm:		true,
 	logLevel:	"W",
 	useTabsPermission: false,
 	sendSegmentId: false,
@@ -65,7 +64,6 @@ function loadOptions() {
     var bg_force = document.getElementById('bg-force');
 	var vq = document.getElementById('quality');
 	var sl = document.getElementById('sub-lang');
-	var x_nd = document.getElementById('no-drm');
 	var a_ll = document.getElementById('log-level');
 	var ssi = document.getElementById('send-segment-id');
 	
@@ -101,10 +99,6 @@ function loadOptions() {
 	if(!!bg_force) {
 		if(typeof result.bg_force != "undefined") bg_force.checked = result.bg_force;
 		else bg_force.checked = CRF_DEF_SETTS.bg_force;
-	}
-	if(!!x_nd) {
-		if(typeof result.no_drm != "undefined") x_nd.checked = result.no_drm;
-		else x_nd.checked = CRF_DEF_SETTS.no_drm;
 	}
 	if(!!ssi) {
 		if(typeof result.sendSegmentId != "undefined") ssi.checked = result.sendSegmentId;
