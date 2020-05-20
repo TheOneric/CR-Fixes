@@ -69,14 +69,14 @@ If set to *false* custom backgrounds on crunchyroll userpages are respected, but
 If set to *true* the background chosen by the user of this extension will replace all other backgrounds.
  
 ### Default Video Quality (disabled)
-**Disabled unti [#2](https://github.com/TheOneric/CR-Fixes/issues/2) has been resolved**
+**Disabled unti [#2](https://github.com/TheOneric/CR-Fixes/issues/2) has been resolved**  
 **Default: none**  
 *If not default value, 'activeTab' permission is required*  
 If set to something other than *none*, the extension will try to set the video quality to the given value when the page is loaded.  
 Available values: *none*, *auto*, *1080*, *720*, *480*, *360*, *240*
 
 ### Subtitle Languages (disabled)
-**Disabled unti [#2](https://github.com/TheOneric/CR-Fixes/issues/2) has been resolved**
+**Disabled unti [#2](https://github.com/TheOneric/CR-Fixes/issues/2) has been resolved**  
 **Default: \<empty string\>**  
 *If not default value, 'activeTab' permission is required*  
 If not empty the extension will try to set the subtitle language according to this option, regardless of the language of the crunchyroll website.
@@ -109,7 +109,7 @@ Tells the extension what messages should be logged to console. By default only e
 ## Removed settings
 
 ### Experimental: Request DRM-free streams
-**Removed: Cookie no longer acknowledged, but fallback to HLS by default if no Widevine supported**
+**Removed: Cookie no longer acknowledged, but fallback to HLS by default if no Widevine supported**  
 **Default: true**  
 When saving settings with this as *true*, and on browser start if this is set to *true*:
 Setting *"VILOS\_DRM\_ROLLOUT"* cookie to the non-drm value. As crunchyroll might stop respecting this cookie value at any time, this is marked as an experimental feature.
