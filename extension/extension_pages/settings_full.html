@@ -123,10 +123,23 @@
 	  </tr>
 	
 	  <tr>
+		<td colspan="3">
+		<strong style="color: red;"> 
+			Quality and language selection temporarily(?) disabled
+		</strong>
+		, see
+		<a target="_blank" rel="noopener noreferrer" href="https://github.com/TheOneric/CR-Fixes/issues/2">
+			here
+		</a>
+		for details.
+	  </tr>
+	  <tr>
 		<th>
 		 <label> Videoquality <span class="note-activeTab-perm">*</span> </label> <!-- for="quality_none" -->
 		</th> <td colspan="3">
-		 <select id="quality" required>
+		<!-- FIXME HELP-WANTED: issue #2
+		 <select id="quality" required>  -->
+		 <select id="quality" disabled>
 		  <option value="none"> none</option>
 		  <option value="240">  240P</option>
 		  <option value="360">  360P</option>
@@ -170,7 +183,9 @@
 	   </th> <td colspan="3">
 		<input type="text" id="sub-lang" 
 			placeholder="e.g.: 'German; English; Spanish (Spain...; Off'"
-			size="40">
+			size="40"
+			disabled>
+			<!-- FIXME HELP-WANTED: issue #2 -->
 	   </td>
 	  </tr>
 	 </table>

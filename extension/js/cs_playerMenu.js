@@ -38,5 +38,7 @@ function doStuff(settings) {
 }
 
 
-settings_vt_query.then(doStuff, crfLogError);
+// FIXME & HELP-WANTED: React-Player broke this, see:
+//   https://github.com/TheOneric/CR-Fixes/issues/2
+//settings_vt_query.then(doStuff, crfLogError);
 
