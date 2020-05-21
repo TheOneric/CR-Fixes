@@ -1,11 +1,21 @@
 PRIO HIGH:
-- Find and eliminate bug where sub and quality injection sometimes fails even in the active tab
-  ( possibly permission request is rejected because not directly in event handler ? )
+
 
 PRIO MEDIUM:
 
 
 PRIO LOW:
 - Move div#container.cf colour to darkmode stylesheet, only add seperate style tag when no theme is used
-- Add OPTIONAL (Advanced setting) mode for injection where 'tabs' permission is requested so that injection also works in not-active tabs
 
+
+----
+
+FROZEN
+  (affected feature currently disabled):
+
+[high]
+- Find and eliminate bug where sub and quality injection sometimes fails even in the active tab
+  ( possibly permission request is rejected because not directly in event handler ? )
+
+[low]
+- Add OPTIONAL (Advanced setting) mode for injection where 'tabs' permission is requested so that injection also works in not-active tabs

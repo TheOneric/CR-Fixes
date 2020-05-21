@@ -1,5 +1,15 @@
 #Changelog (end-user features only)
 
+##UNRELEASED:
++ New experimental setting: "Custom Segment-Id event"
+* Improved Sidebar positioning when logged in and on preview epsiodes
+* Minor improvements for settings page
+* Fixed bug with reversed logging priority
+- Disabled quality and language selection for now
+  (see issue [#2](https://github.com/TheOneric/CR-Fixes/issues/2))
+- Removed experimental setting "Request DRM-free"
+  CR no longer acknowledges this cookie, but now falls back to non-DRM stream by default when Widevine absent
+
 ##Version 1.1.2
 * now request 'activeTab' permission when using quality or sublang settings
 * this might fix injection failure bug ?
