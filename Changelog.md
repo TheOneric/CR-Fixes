@@ -1,6 +1,8 @@
 #Changelog (end-user features only)
 
-##UNRELEASED:
+##Version 1.2.0  (2020-05-21)
++ Option to move simulcasts above news on startpage
++ Customisable Navbar
 + New experimental setting: "Custom Segment-Id event"
 * Improved Sidebar positioning when logged in and on preview epsiodes
 * Minor improvements for settings page

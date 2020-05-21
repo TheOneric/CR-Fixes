@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!--
+   This file is part of CR-Fixes.
+   Copyright 2019  Oneric  https://github.com/TheOneric , https://oneric.de
+
+    CR-Fixes is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    CR-Fixes is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with CR-Fixes.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="common.css" />
+    <title>Cr-Fix Update!</title>
+    <style>
+        h1 {
+            color: #F5922E;
+        }
+        dt {
+            font-weight: bold;
+            color: #E5882B;
+            font-size: 120%;
+        }
+    </style>
+  </head>
+
+  <body>
+    <h1> CR-Fix 1.2 - Update</h1>
+    <h2> New Feaures: </h2>
+    <dl>
+      <dt>Customisable navbar</dt>
+      <dd>
+        Re-Add the 'Forum' tab to the navbar and/or remove tabs you don't need!
+      </dd>
+
+      <dt>Startpage: Top Simulcast</dt>
+      <dd>
+        Move the simulcast section on the startpage to the top, directly below the news carousel.
+        (Moves it above the news section) <br />
+        Allows you to quickly get an overview of the current releases.
+      </dd>
+
+      <dt>Experimental: Custom SegmentId-Event</dt>
+      <dd>
+        Useful in some cases where the original event does not get triggered properly.
+        (Prevents the player from showing up) <br />
+        If you don't have problems with the player showing up, than you don't need this.
+      </dd>
+    </ul>
+
+    <p style="font-size: 110%; text-align: center;">
+    <a href="settings_full.html" target="_blank" rel="noopener noreferrer"> 
+        Go to settings and give it a try!
+    </a>
+    </p>
+
+
+    <h2> Other Improvements: </h2>
+    <ul>
+      <li>Improved sidebar positioning for preview episodes and when logged in.</li>
+      <li>Fixed bug which reversed logging priority</li>
+      <li>Minor clarifications on setting page</li>
+    </ul>
+
+    <h2> Disabled Features: </h2>
+    <div style="font-size: 90%">
+    <p>
+    Unfortunately I had to disable the quality and language selection as an update of the
+    Crunchyroll player broke them and they became unusable.
+    I couldn't find a reasonable way to restore the functionality.
+    If you feel like you can do better or just want to know a bit more about the restrictions, check
+    <a href="https://github.com/TheOneric/CR-Fixes/issues/2" target="_blank" rel="noopener noreferrer"> 
+        here
+    </a>
+    for more details.
+    </p><p>
+    Another setting that had to go is the experimental "Request DRM-free streams".
+    Crunchyroll does no longer acknowledge this cookie, <strong>but</strong>
+    it now falls back to a sane DRM-free HLS stream by default, when WIdevine is not
+    supported on the target device. So there's no need for this setting anymore anyway.
+    </p>
+    <ul>
+      <li>Temporarily(?) disabled quality and language selection</li>
+      <li>Removed "Ex: Request DRM-free streams" setting</li>
+    </ul>
+    </div>
+
+    <br />
+
+    <div style="font-size: 80%">
+    Want more features ? Send a
+    <span style="font: monospace;">git format-patch</span>
+    per Email, or 
+    <a href="https://github.com/TheOneric/CR-Fixes" target="_blank" rel="noopener noreferrer"> 
+        a GitHub pull-request.
+    </a>.
+    
+    <br /><br />
+
+    Found a bug?
+    <a href="https://github.com/TheOneric/CR-Fixes/issues" target="_blank" rel="noopener noreferrer"> 
+        Report it!
+    </a>
+    Or even better yet, if you can write Javascript: Fix it and send a patch/pull-request.
+
+
+  </body>
+
+</html>
