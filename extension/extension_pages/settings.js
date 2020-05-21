@@ -66,7 +66,7 @@ function loadOptions() {
 	var sl = document.getElementById('sub-lang');
 	var a_ll = document.getElementById('log-level');
 	var ssi = document.getElementById('send-segment-id');
-	
+
 	// Easy Default case handling (no booleans)
     if(!!ps_16_9_x) ps_16_9_x.value = result.ps_16_9_x || CRF_DEF_SETTS.ps_16_9_x;
     if(!!ps_16_9_y) ps_16_9_y.value = result.ps_16_9_y || CRF_DEF_SETTS.ps_16_9_y;
@@ -77,34 +77,22 @@ function loadOptions() {
 	if(!!vq) vq.value = result.quality || CRF_DEF_SETTS.quality;
 	if(!!a_ll) a_ll.value = result.logLevel || CRF_DEF_SETTS.logLevel;
 
-	//Messy
-    if(!!ap) { 
-		if(typeof result.autoplay != "undefined")
-			ap.checked = result.autoplay;
+	//Booleans
+	function setBooleanChecked(obj, settName) {
+		if(!obj) return;
+		if(typeof result[settName] != "undefined")
+			obj.checked = !!result[settName];
 		else
-			ap.checked = CRF_DEF_SETTS.autoplay;
+			obj.checked = CRF_DEF_SETTS[settName];
 	}
-    if(!!dt) {
-		if(typeof result.darktheme != "undefined") dt.checked = result.darktheme;
-		else dt.checked = CRF_DEF_SETTS.darktheme;
-	}
-	if(!!ps) {
-		if(typeof result.customPlayerSizes != "undefined") ps.checked = result.customPlayerSizes;
-		else ps.checked = CRF_DEF_SETTS.customPlayerSizes;
-	}
-	if(!!bg) {
-		if(typeof result.customBackground != "undefined") bg.checked = result.customBackground;
-		else bg.checked = CRF_DEF_SETTS.customBackground;
-	}
-	if(!!bg_force) {
-		if(typeof result.bg_force != "undefined") bg_force.checked = result.bg_force;
-		else bg_force.checked = CRF_DEF_SETTS.bg_force;
-	}
-	if(!!ssi) {
-		if(typeof result.sendSegmentId != "undefined") ssi.checked = result.sendSegmentId;
-		else ssi.checked = CRF_DEF_SETTS.sendSegmentId;
-	}
-	
+
+	setBooleanChecked(ap, 'autoplay');
+	setBooleanChecked(dt, 'darktheme');
+	setBooleanChecked(ps, 'customPlayerSizes');
+	setBooleanChecked(bg, 'customBackground');
+	setBooleanChecked(bg_force, 'bg_force');
+	setBooleanChecked(ssi, 'sendSegmentId');
+
 	ap.dispatchEvent(event_crf_settings_loaded);
 	console.log(result);
   }
@@ -116,7 +104,7 @@ function loadOptions() {
 
 
 function restoreDefaults() {
-  if(!confirm("Are you sure you want to restore Default settings ?\n(Changes still need to be saved afterwards)"))
+  if(!confirm("Are you sure you want to restore Default settings ?"))
 	return;
   var prom = browser.storage.sync.set(CRF_DEF_SETTS);
   prom.then(loadOptions, onError);
