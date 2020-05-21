@@ -186,6 +186,15 @@ input:checked + .slider:before {
   background-color: #F5922E;
 }
 
+/* Alternate colors if disabled */
+.container input:disabled:checked ~ .checkmark {
+  background-color: #888;
+}
+
+.container input:disabled ~ .checkmark {
+  background-color: #bababa;
+}
+
 /* Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {
   content: "";

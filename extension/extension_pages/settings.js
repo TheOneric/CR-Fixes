@@ -30,6 +30,14 @@ const CRF_DEF_SETTS = {
 	bg_force:			false,
 	quality:			"none",
 	sub_lang:			"",
+	startpage_simulTop:	false,
+	navbar_custom:		false,
+	navbar_shows:		true,
+	navbar_forum:		false,
+	navbar_news:		true,
+	navbar_games:		true,
+	navbar_store:		true,
+	navbar_premium:		true,
 	//Advanced and experimental settings
 	logLevel:	"W",
 	useTabsPermission: false,
@@ -66,6 +74,14 @@ function loadOptions() {
 	var sl = document.getElementById('sub-lang');
 	var a_ll = document.getElementById('log-level');
 	var ssi = document.getElementById('send-segment-id');
+	var sp_simu = document.getElementById('startpage-simulTop');
+	var nb_c    = document.getElementById('navbar-custom');
+	var nb_shws = document.getElementById('navbar-shows');
+	var nb_frm  = document.getElementById('navbar-forum');
+	var nb_nws  = document.getElementById('navbar-news');
+	var nb_gms  = document.getElementById('navbar-games');
+	var nb_str  = document.getElementById('navbar-store');
+	var nb_prmm = document.getElementById('navbar-premium');
 
 	// Easy Default case handling (no booleans)
     if(!!ps_16_9_x) ps_16_9_x.value = result.ps_16_9_x || CRF_DEF_SETTS.ps_16_9_x;
@@ -92,6 +108,14 @@ function loadOptions() {
 	setBooleanChecked(bg, 'customBackground');
 	setBooleanChecked(bg_force, 'bg_force');
 	setBooleanChecked(ssi, 'sendSegmentId');
+	setBooleanChecked(sp_simu, 'startpage_simulTop');
+	setBooleanChecked(nb_c, 'navbar_custom');
+	setBooleanChecked(nb_shws, 'navbar_shows');
+	setBooleanChecked(nb_frm,  'navbar_forum');
+	setBooleanChecked(nb_nws,  'navbar_news');
+	setBooleanChecked(nb_gms,  'navbar_games');
+	setBooleanChecked(nb_str,  'navbar_store');
+	setBooleanChecked(nb_prmm, 'navbar_premium');
 
 	ap.dispatchEvent(event_crf_settings_loaded);
 	console.log(result);

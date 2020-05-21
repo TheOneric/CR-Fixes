@@ -2,7 +2,7 @@
 
   "manifest_version": 2,
   "name": "CR-Fixes",
-  "version": "1.1.2",
+  "version": "1.2.0",
 
   "description": "Adds some additional functionality to the Crunchyroll website.",
   "homepage_url": "https://github.com/TheOneric/cr-fixes",
@@ -20,6 +20,14 @@
 	  "exclude_globs": ["*/versioned_assets/*"],
 	  "js": ["js/lib_general.js", "js/lib_awaitMatch.js", "js/cs_bg.js"],
 	  "run_at": "document_idle"
+	},
+	{
+	 "matches": [
+		"https://www.crunchyroll.com/*"
+	  ],
+	  "exclude_globs": ["*/versioned_assets/*"],
+	  "js": ["js/lib_general.js", "js/cs_reorder.js"],
+	  "run_at": "document_end"
 	},
 	{
 	  "matches": ["https://www.crunchyroll.com/*"],

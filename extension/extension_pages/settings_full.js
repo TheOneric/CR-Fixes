@@ -19,14 +19,21 @@
 /** This file depends on extension_pages/settings.js  to be loaded beforehand !  */
 
 function disenableAll() {
-    var bg = document.getElementById('customBackground').checked;
-    var ps = document.getElementById('customPlayerSizes').checked;
+    const bg = document.getElementById('customBackground').checked;
+    const ps = document.getElementById('customPlayerSizes').checked;
+	const nb = document.getElementById('navbar-custom').checked;
 	//console.log("[disenAll] bg:"+bg+"  ;  ps:"+ps);
     document.getElementById('bg-url').disabled = !bg;
     document.getElementById('player-size-16-9-x').disabled = !ps;
     document.getElementById('player-size-16-9-y').disabled = !ps;
-    document.getElementById('player-size-5-3-x').disabled = !ps;
-    document.getElementById('player-size-5-3-y').disabled = !ps;
+    document.getElementById('player-size-5-3-x').disabled  = !ps;
+    document.getElementById('player-size-5-3-y').disabled  = !ps;
+    document.getElementById('navbar-shows').disabled   = !nb;
+    document.getElementById('navbar-forum').disabled   = !nb;
+    document.getElementById('navbar-news').disabled    = !nb;
+    document.getElementById('navbar-games').disabled   = !nb;
+    document.getElementById('navbar-store').disabled   = !nb;
+    document.getElementById('navbar-premium').disabled = !nb;
 }
 
 function saveOptions(e) {
@@ -44,6 +51,14 @@ function saveOptions(e) {
 	bg_force: document.getElementById('bg-force').checked,
 	sub_lang: document.getElementById('sub-lang').value,
 	quality: document.getElementById('quality').value,
+	startpage_simulTop: document.getElementById('startpage-simulTop').checked,
+	navbar_custom:  document.getElementById('navbar-custom').checked,
+	navbar_shows:   document.getElementById('navbar-shows').checked,
+	navbar_forum:   document.getElementById('navbar-forum').checked,
+	navbar_news:    document.getElementById('navbar-news').checked,
+	navbar_games:   document.getElementById('navbar-games').checked,
+	navbar_store:   document.getElementById('navbar-store').checked,
+	navbar_premium: document.getElementById('navbar-premium').checked,
 	logLevel: document.getElementById('log-level').value,
 	sendSegmentId: document.getElementById('send-segment-id').checked
   };
@@ -58,11 +73,13 @@ function init() {
 
     var _selector = document.getElementById('customBackground');
     _selector.addEventListener('change', disenableAll);
-	var _selector = document.getElementById('customPlayerSizes');
+    _selector = document.getElementById('customPlayerSizes');
+    _selector.addEventListener('change', disenableAll);
+    _selector = document.getElementById('navbar-custom');
     _selector.addEventListener('change', disenableAll);
 
 	document.getElementById('bgTemplate').href = browser.runtime.getURL("img/cr-background-template.png");
-	
+
 }
 
 

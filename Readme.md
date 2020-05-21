@@ -67,6 +67,21 @@ If set to *false* no action will be taken.
 **Default: false**  
 If set to *false* custom backgrounds on crunchyroll userpages are respected, but if a crunchyroll user did not set a background for their userpage, the background will be replaced.  
 If set to *true* the background chosen by the user of this extension will replace all other backgrounds.
+
+### Sp: Top Simulcast
+**Default: false**  
+If set to *true* the 'Simulcasts' section on the startpage will be moved above the news section.
+(Simulcasts will be on top of all other sections directly below the news carousel)
+
+### Custom Navbar
+**Default: false**  
+If set to true the Navbar on all regular Crunchyroll pages, will be modified according to your selection.
+With this it is possible to readd the 'Forum' tab and remove unneccessary tabs.
+
+#### Navbar: ×××
+**Default: true iff CR has this in their default navbar as of writing**  
+If set to *true* will keep/add tab '×××' to the navbar.
+If set to *false*, remove tab '×××' from the navbar.
  
 ### Default Video Quality (disabled)
 **Disabled unti [#2](https://github.com/TheOneric/CR-Fixes/issues/2) has been resolved**  
