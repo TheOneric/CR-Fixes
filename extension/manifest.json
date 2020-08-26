@@ -66,7 +66,8 @@
   },
 
   "web_accessible_resources": [
-    "img/cr-background-template.png"
+    "img/cr-background-template.png",
+    "css/darktheme.css"
   ],
 
   "permissions": [
