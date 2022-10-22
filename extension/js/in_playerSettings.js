@@ -15,7 +15,7 @@
 *    You should have received a copy of the GNU General Public License
 *    along with CR-Fixes.  If not, see <http://www.gnu.org/licenses/>.
 *
-*	Copyright 2019  Oneric  https://github.com/TheOneric , https://oneric.de
+*	Copyright 2019  Oneric
 * */
 
 var settings_vt_query = browser.storage.sync.get(["quality", "sub_lang"]);
