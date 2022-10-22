@@ -52,10 +52,13 @@ function init(settings) {
     return;
   
   window.addEventListener('beforescriptexecute',
-    function(event)
+    async function(event)
     {
       if(event.target.src.match(/\/vilos_player.*\.js$/) ) {
 		  crfLogInfo("Vilos Player script detected !");
+
+          //Prevent original script from being executed
+          event.preventDefault();
   	      
           //Remove original and define custom VilosPlayer
           var parent_node = event.target.parentNode;
@@ -64,16 +67,24 @@ function init(settings) {
           //Load original script; modify it and create replacement script
           // to make  VilosPlayer  available in page context we need to use window.eval
           //Due to unclear license conditions, we cannot download and modify the script beforehand to then insert it locally with browser.runtime.getURL()
-          fetch(event.target.src) //fetch the uptodate vilos player script
-            .then(response => response.text(), crfLogError)
-			//Previous Vilos player version 07ba0994
-            //.then(src => src.replace(/"ended",function\(\)\{c&&\(location\.href=c\)\}\)\}\}$/, '"ended",function(){if(!!c) crf_onVideoEnd_dynamic(c);})}}'), crfLogError)
-			//Current version (7e305b26)
-			.then(src => src.replace(/\(location.href=([^)]*("[^"]*")?)+\)/g, '(crf_onVideoEnd_dynamic($1))'), crfLogError)
-            .then(new_src => {crfLogDebug(new_src); window.eval(new_src);}, crfLogError);
-          
-          //Prevent original script from being executed
-          event.preventDefault();
+          try {
+            const response = await fetch(event.target.src);
+            const old_src  = await response.text();
+            //Current version (7e305b26)
+            const new_src  = old_src.replace(
+                                /\(location.href=([^)]*("[^"]*")?)+\)/g,
+                                '(crf_onVideoEnd_dynamic($1))'
+                            );
+            //Previous Vilos player version 07ba0994
+            //old_src.replace(
+            //      /"ended",function\(\)\{c&&\(location\.href=c\)\}\)\}\}$/,
+            //      '"ended",function(){if(!!c) crf_onVideoEnd_dynamic(c);})}}')
+
+            crfLogDebug(new_src);
+            window.eval(new_src);
+          } catch(err) {
+            crfLogError(err);
+          }
       }
     }
   );
