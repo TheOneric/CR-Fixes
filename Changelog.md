@@ -2,6 +2,7 @@
 
 ##UNRELEASED
 * Fix update notification showing up on browser updates and install
+* Added deprecation notice.
 
 ##Version 1.2.0  (2020-05-21)
 + Option to move simulcasts above news on startpage

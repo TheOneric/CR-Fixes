@@ -1,3 +1,12 @@
+# Deprecation Notice
+
+CR-Fixes in no longer in development and only ever worked
+with the old (pre 2022-10) website design.  
+Feel free to fork it though, if anything seems useful to
+keep around for use iwth the new design.
+
+--------
+
 # CR-Fixes
 
 ![logo](https://raw.githubusercontent.com/TheOneric/CR-Fixes/master/extra-files/Logo-ver1%2Bbackground.png)
