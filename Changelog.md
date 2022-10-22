@@ -1,6 +1,6 @@
 #Changelog (end-user features only)
 
-##UNRELEASED
+##Version 1.2.1  (2022-10-22) - Final Release
 * Fix update notification showing up on browser updates and install
 * Added deprecation notice.
 
