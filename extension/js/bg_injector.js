@@ -48,12 +48,13 @@ async function onInstalled({reason, temporary}) {
 	crfLogInfo("Installed!  " + reason + " (" + temporary + ")");
 	if(temporary) return;
 	switch(reason) {
-		default:
-		//case "update":
+		case "update":
 			crfLogDebug("Updated!")
 			const url = browser.runtime.getURL("extension_pages/upgrade.html");
 			//browser.tabs.create({ url });
 			await browser.windows.create({url, type: "popup", height: 600, width: 800});
+			break;
+		default:
 			break;
 	}
 }
